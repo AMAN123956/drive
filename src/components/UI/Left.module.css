@@ -1,9 +1,0 @@
-.leftBox{
-    display:flex;
-    flex-direction: column;
-    width:60%;
-    padding:10px;
-}
-.logoImg{
-    width:30%;
-}

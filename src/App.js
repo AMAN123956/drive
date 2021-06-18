@@ -3,7 +3,7 @@ import './App.css';
 /* Bootstrap */
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 /* Register */
-import Register from './components/Register/Register'
+import Register from './components/Auth/Index'
 
 function App() {
   return (
