@@ -1,0 +1,15 @@
+/* Left SideBar */
+.optionBtn{
+    background:none;
+    border:none;
+    font-weight:700;
+    font-size:1.4rem;
+    width:100%;
+    padding:10px 20px;
+    height:50px;
+    margin-top:5px;
+    border-radius: 20px;
+}
+.optionBtn:hover{
+    background-color: lightblue;
+}

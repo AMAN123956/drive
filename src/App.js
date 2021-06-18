@@ -4,7 +4,11 @@ import './App.css';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 /* Register */
 import Register from './components/Register/index'
+/* Login */
 import Login from './components/Login/index'
+/* Home Page */
+import Home from './components/Home/index'
+
 import {BrowserRouter as Router ,Switch,Route} from 'react-router-dom'
 
 function App() {
@@ -15,6 +19,7 @@ function App() {
           <Switch>
             <Route path='/' exact><Register></Register></Route>
             <Route path='/login'><Login></Login></Route>
+            <Route path='/home'><Home /></Route>
           </Switch>
         </Router>
       </div>

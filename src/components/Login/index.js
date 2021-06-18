@@ -39,9 +39,9 @@ function Login() {
     return (
         <div className="container p-5 shadow my-2 d-flex justify-content-center align-items-center " style={{ background: "#f7fafb", height: "600px" }}>
             <div className="form-container p-5 shadow">
+            {error&&<Message variant={'danger'}>{error}</Message>}
+            {message && <Message variant="success">{message}</Message>}
                 <div className="mt-4" >
-                    {error&&<Message variant={'danger'}>{error}</Message>}
-                    {message && <Message variant="success">{message}</Message>}
                     <Form onSubmit={submitLogin}>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
@@ -58,7 +58,7 @@ function Login() {
                             Login
                         </Button>
                     </Form>
-                    <div mt-3>
+                    <div className="mt-3">
                         <p>Don't have an account ? <Link to='/'>Signup</Link></p>
                     </div>
                 </div>

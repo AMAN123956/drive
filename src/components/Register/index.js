@@ -48,9 +48,9 @@ function Register() {
     return(
         <div className="container p-5 shadow my-2 d-flex justify-content-center align-items-center " style={{ background: "#f7fafb", height: "600px" }}>
             <div className="form-container p-5 shadow">
-                <div className="mt-4" style={{ height: "400px" }}>
-                    {error&&<Message variant={'danger'}>{error}</Message>}
-                    {message && <Message variant="success">{message}</Message>}
+            {error&&<Message variant={'danger'}>{error}</Message>}
+            {message && <Message variant="success">{message}</Message>}
+                <div className="mt-4" style={{ height: "420px" }}>
                     <Form onSubmit={submitRegister}>
                         <Form.Group controlId="formBasicName">
                             <Form.Label>Username</Form.Label>
@@ -75,7 +75,7 @@ function Register() {
                             Signup
                         </Button>
                     </Form>
-                    <div mt-3>
+                    <div className="mt-3">
                         <p>Already have an account ? <Link to='/login'>Login</Link></p>
                     </div>
                 </div>            
