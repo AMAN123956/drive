@@ -19,14 +19,15 @@ function Register() {
         <div className="container p-5 shadow my-5 d-flex justify-content-center" style={{background:"#f7fafb"}}>
             {/* Left Section  */}
             <Left />
-            <div className="form-container p-5 shadow" style={{height:"300px;"}}>
+             {/* Right Form Section  */}
+            <div className="form-container p-5 shadow">
                 <div className="d-flex  mt-3">
                     <button className={styles.toggleBtn} style={{backgroundColor: count===0 ? '#20bead' : 'lightgray'}} onClick={handleRegister}>Register</button>
                     <button className={styles.toggleBtn} style={{backgroundColor: count===1 ? '#20bead' : 'lightgray'}} onClick={handleLogin}>Login</button>
                 </div>
                 {/* Register Form */}
                 {count === 0 ? (
-                    <div className="mt-4">
+                    <div className="mt-5">
                         <Form>
                             <Form.Group controlId="formBasicName">
                                 <Form.Label>Username</Form.Label>
