@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './styles.module.css'
-import { Navbar, Nav, FormControl, InputGroup, DropdownButton, Dropdown, Button } from 'react-bootstrap'
+import { Navbar, Nav, FormControl, InputGroup, DropdownButton, Dropdown  } from 'react-bootstrap'
 
 
 function Menu() {

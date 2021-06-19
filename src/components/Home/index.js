@@ -1,11 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './styles.module.css'
 import Navbar from '../Navbar/index'
-import {Button} from 'react-bootstrap'
-import {Link} from 'react-router-dom'
-import Message from '../Message';
-import url from '../../utilities'
-import axios from 'axios'
 
 function Home() {
     return (

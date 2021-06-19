@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './styles.module.css'
 import { Button, Form } from 'react-bootstrap';
-import {Link} from 'react-router-dom'
-import Message from '../Message';
-import url from '../../utilities'
-import axios from 'axios'
+import {Link, useHistory} from 'react-router-dom'
+import Message from '../Message/index';
+import Loader from '../Loader/index'
+import { useDispatch, useSelector } from 'react-redux';
+import { register } from '../../actions/userActions';
 
 function Register() {
     const [name, setname] = useState('')
@@ -12,44 +13,50 @@ function Register() {
     const [password, setpassword] = useState('')
     const [confirmPassword, setconfirmPassword] = useState('')
     const [error, seterror] = useState(null)
-    const [message, setmessage] = useState(null)
 
-    if(error || message){
+    const dispatch=useDispatch()
+    const userRegister=useSelector(state=>state.userRegister)
+
+    const history=useHistory()
+
+    let {loading,error:registerError,userInfo}=userRegister
+
+
+    useEffect(() => {
+        if(userInfo){
+            history.push('/home')
+        }
+    // eslint-disable-next-line
+    }, [userInfo,registerError])
+
+
+    if(error || registerError){
         setTimeout(() => {
             seterror(null)
-            setmessage(null)
         }, 3000);
     }
     
-    const submitRegister=async(e)=>{
+    if(registerError){
+        setTimeout(() => {
+            registerError= null
+        }, 3000);
+    }
+
+    const submitRegister=(e)=>{
         e.preventDefault()
         if(password!==confirmPassword){
             seterror('Password Mismatch')
         }else{
-            try{     
-                let obj={
-                    "name":name,
-                    "email":email,
-                    "password":password
-                }
-                const {data}=await axios.post(`${url}/api/users`,obj)
-                if(data.success){
-                    setmessage('Registered Successfully !')
-                }else{
-                    seterror(data.message)
-                }
-                console.log(data)
-            }catch(e){
-                console.log(e)
-                seterror('Some error occured')
-            }
+            dispatch(register(name,email,password))
         }
     }
+
     return(
         <div className="container p-5 shadow my-2 d-flex justify-content-center align-items-center " style={{ background: "#f7fafb", height: "600px" }}>
             <div className="form-container p-5 shadow">
             {error&&<Message variant={'danger'}>{error}</Message>}
-            {message && <Message variant="success">{message}</Message>}
+            {registerError&&<Message variant={'danger'}>{registerError}</Message>}
+            {loading && <Loader></Loader>}
                 <div className="mt-4" style={{ height: "420px" }}>
                     <Form onSubmit={submitRegister}>
                         <Form.Group controlId="formBasicName">
@@ -71,7 +78,7 @@ function Register() {
                             <Form.Label>Confirm Password</Form.Label>
                             <Form.Control type="password" placeholder="Password" required value={confirmPassword} onChange={(e)=>{setconfirmPassword(e.target.value)}} />
                         </Form.Group>
-                        <Button type="submit" className={styles.btn}>
+                        <Button type="submit" className={styles.btn} disabled={loading}>
                             Signup
                         </Button>
                     </Form>
