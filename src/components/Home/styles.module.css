@@ -1,15 +1,21 @@
 /* Left SideBar */
+.leftSideBar{
+   width:18%;
+   display:flex;
+   flex-direction: column;
+}
 .optionBtn{
     background:none;
     border:none;
-    font-weight:700;
-    font-size:1.4rem;
+    color:gray;
+    font-size:1.2rem;
     width:100%;
-    padding:10px 20px;
-    height:50px;
+    padding:5px 30px;
+    height:40px;
     margin-top:5px;
     border-radius: 20px;
+    text-align:left;
 }
 .optionBtn:hover{
-    background-color: lightblue;
+    background-color: lightgray;
 }
