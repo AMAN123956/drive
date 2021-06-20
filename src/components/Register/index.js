@@ -15,15 +15,19 @@ function Register() {
     const [error, seterror] = useState(null)
 
     const dispatch=useDispatch()
-    const userRegister=useSelector(state=>state.userRegister)
-
     const history=useHistory()
 
+    const userRegister=useSelector(state=>state.userRegister)
     let {loading,error:registerError,userInfo}=userRegister
 
+    const userLogin=useSelector(state=>state.userLogin)
+    const {userInfo:loginUserInfo}=userLogin
+
+
+    console.log(userInfo)
 
     useEffect(() => {
-        if(userInfo){
+        if(userInfo || loginUserInfo){
             history.push('/home')
         }
     // eslint-disable-next-line

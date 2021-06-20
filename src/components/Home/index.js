@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './styles.module.css'
 import Navbar from '../Navbar/index'
+import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 function Home() {
+
+    const history=useHistory()
+    
+    const userLogin=useSelector(state=>state.userLogin)
+    const {userInfo}=userLogin
+
+    useEffect(() => {
+        if(!userInfo){
+            history.push('/')
+        }
+    // eslint-disable-next-line
+    }, [userInfo])
+
     return (
         <div className="">
             {/* Navbar */}
