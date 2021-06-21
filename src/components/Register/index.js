@@ -6,7 +6,7 @@ import Message from '../Message/index';
 import Loader from '../Loader/index'
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../actions/userActions';
-
+import registerImg from '../../assets/img/register.png'
 function Register() {
     const [name, setname] = useState('')
     const [email, setemail] = useState('')
@@ -56,12 +56,17 @@ function Register() {
     }
 
     return(
-        <div className="container p-5 shadow d-flex justify-content-center align-items-center " style={{ background: "#f7fafb", height: "600px" }}>
-            <div className="form-container p-5 shadow">
+        <div className="container d-flex  justify-content-center align-items-center ">
+            <div className={styles.leftSection}>
+               <h2 className={styles.logoHeading}>Drive</h2>
+               <img src={registerImg} className={styles.registerImg} alt="display_img"/>
+            </div>
+            
+            <div className="form-container my-5 p-4" id="formBox" style={{minWidth:"350px"}}> 
             {error&&<Message variant={'danger'}>{error}</Message>}
             {registerError&&<Message variant={'danger'}>{registerError}</Message>}
             {loading && <Loader></Loader>}
-                <div className="mt-4" style={{ height: "420px" }}>
+                <div className="mt-4" style={{ height: "100%"}}>
                     <Form onSubmit={submitRegister}>
                         <Form.Group controlId="formBasicName">
                             <Form.Label>Username</Form.Label>

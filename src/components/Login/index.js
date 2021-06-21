@@ -6,6 +6,7 @@ import Message from '../Message/index'
 import Loader from '../Loader/index'
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../actions/userActions';
+import registerImg from '../../assets/img/register.png'
 function Login() {
     const [email, setemail] = useState('')
     const [password, setpassword] = useState('')
@@ -35,8 +36,12 @@ function Login() {
         dispatch(login(email,password))
     }
     return (
-        <div className="container p-5 shadow my-2 d-flex justify-content-center align-items-center " style={{ background: "#f7fafb", height: "600px" }}>
-            <div className="form-container p-5 shadow">
+        <div className="container my-5 d-flex justify-content-center align-items-center ">
+            <div className={styles.leftSection}>
+               <h2 className={styles.logoHeading}>Drive</h2>
+               <img src={registerImg} className={styles.registerImg} alt="display_img"/>
+            </div>
+            <div className="form-container my-5 p-4 shadow" id="formBox" style={{minWidth:"350px"}}>
             {error&&<Message variant={'danger'}>{error}</Message>}
             {loginError && <Message variant='danger'>{loginError}</Message>}
             {loading&&<Loader></Loader>}
