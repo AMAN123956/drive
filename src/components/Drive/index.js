@@ -1,25 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import {Link} from 'react-router-dom'
 import styles from './styles.module.css'
 import Navbar from '../Navbar/index'
-import { Link,useHistory } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 import Modals from '../Modal/index'
 import emptyImg from '../../assets/img/empty.png'
-
-function Home() {
-
-    const history=useHistory()
-    
-    const userLogin=useSelector(state=>state.userLogin)
-    const {userInfo}=userLogin
-
-    useEffect(() => {
-        if(!userInfo){
-            history.push('/')
-        }
-    // eslint-disable-next-line
-    }, [userInfo])
-
+function Drive() {
     return (
         <div className="">
             {/* Navbar */}
@@ -53,8 +39,8 @@ function Home() {
                 {/* Files To Show */}
                 <div className="row p-3">
                     {/* One File */}
-                    <h2>Recent</h2>
-                   <img src={emptyImg} className={styles.emptyImg} alt="empty-img" /> 
+                    <h2>Drive</h2>
+                    <img src={emptyImg} className={styles.emptyImg} alt="empty_img" />
                 </div>
             </div>
            </div>
@@ -62,5 +48,4 @@ function Home() {
     )
 }
 
-
-export default Home
+export default Drive

@@ -22,11 +22,6 @@
 .rightBox{
     width:70%;
 }
-.fileImg{
-    width:100%;
-}
-.fileHeading{
-    color:gray;
-    font-size:1.3rem;
-    text-align: center;
+.emptyImg{
+    width:60%;
 }

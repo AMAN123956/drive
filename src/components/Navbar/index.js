@@ -1,13 +1,15 @@
 import React from 'react'
 import styles from './styles.module.css'
 import { Navbar, Nav, FormControl, InputGroup, DropdownButton, Dropdown  } from 'react-bootstrap'
-
+import {Link} from 'react-router-dom'
 
 function Menu() {
     return (
         <>
             <Navbar className="p-3" bg="light" variant="light">
-                <Navbar.Brand href="#home">AA.Drive</Navbar.Brand>
+                <Link to="/home">
+                    <Navbar.Brand href="#">AA.Drive</Navbar.Brand>
+                </Link>
                 <InputGroup className={styles.searchBox}>
                     <FormControl
                         placeholder="Recipient's username"
@@ -31,6 +33,10 @@ function Menu() {
                 <Nav className="ml-auto">
                     <Nav.Link href="#features">About</Nav.Link>
                     <Nav.Link href="#pricing">Profile</Nav.Link>
+                    <Link to="">
+                        <Nav.Link className="text-danger">Logout</Nav.Link>
+                    </Link>
+                   
                 </Nav>
 
             </Navbar>
