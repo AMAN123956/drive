@@ -5,5 +5,4 @@ const Loader1 = () => {
         <div class={styles.loader}>Loading...</div>
     )
 }
-
 export default Loader1
