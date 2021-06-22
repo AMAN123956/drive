@@ -3,7 +3,7 @@ import styles from './styles.module.css'
 import { Button, Form } from 'react-bootstrap';
 import {Link, useHistory} from 'react-router-dom'
 import Message from '../Message/index'
-import Loader from '../Loader/index'
+import Loader1 from '../Loader/Loader-1/index'
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../actions/userActions';
 import registerImg from '../../assets/img/register.png'
@@ -44,7 +44,7 @@ function Login() {
             <div className="form-container my-5 p-4 shadow" id="formBox" style={{minWidth:"350px"}}>
             {error&&<Message variant={'danger'}>{error}</Message>}
             {loginError && <Message variant='danger'>{loginError}</Message>}
-            {loading&&<Loader></Loader>}
+            {/* {loading&&<Loader></Loader>} */}
                 <div className="mt-4" >
                     <Form onSubmit={submitLogin}>
                         <Form.Group controlId="formBasicEmail">
@@ -58,9 +58,12 @@ function Login() {
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" placeholder="Password" value={password} required onChange={(e)=>{setpassword(e.target.value)}} />
                         </Form.Group>
-                        <Button type="submit" className={styles.btn}>
-                            Login
-                        </Button>
+                        {
+                            loading?<Loader1></Loader1>:
+                            <Button type="submit" className={styles.btn}>
+                                Login
+                            </Button>
+                        }
                     </Form>
                     <div className="mt-3">
                         <p>Don't have an account ? <Link to='/'>Signup</Link></p>

@@ -3,7 +3,7 @@ import styles from './styles.module.css'
 import { Button, Form } from 'react-bootstrap';
 import {Link, useHistory} from 'react-router-dom'
 import Message from '../Message/index';
-import Loader from '../Loader/index'
+import Loader1 from '../Loader/Loader-1/index'
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../actions/userActions';
 import registerImg from '../../assets/img/register.png'
@@ -65,7 +65,6 @@ function Register() {
             <div className="form-container my-5 p-4" id="formBox" style={{minWidth:"350px"}}> 
             {error&&<Message variant={'danger'}>{error}</Message>}
             {registerError&&<Message variant={'danger'}>{registerError}</Message>}
-            {loading && <Loader></Loader>}
                 <div className="mt-4" style={{ height: "100%"}}>
                     <Form onSubmit={submitRegister}>
                         <Form.Group controlId="formBasicName">
@@ -87,9 +86,12 @@ function Register() {
                             <Form.Label>Confirm Password</Form.Label>
                             <Form.Control type="password" placeholder="Password" required value={confirmPassword} onChange={(e)=>{setconfirmPassword(e.target.value)}} />
                         </Form.Group>
-                        <Button type="submit" className={styles.btn} disabled={loading}>
-                            Signup
-                        </Button>
+                        {
+                            loading?<Loader1></Loader1>:
+                            <Button type="submit" className={styles.btn} disabled={loading}>
+                                Signup
+                            </Button>
+                        }
                     </Form>
                     <div className="mt-3">
                         <p>Already have an account ? <Link to='/login'>Login</Link></p>
