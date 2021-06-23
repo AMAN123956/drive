@@ -7,3 +7,8 @@
 .searchInput{
     width:100%;
 }
+.btn{
+    background:#20bead;
+    outline: none;
+    border: none;
+}

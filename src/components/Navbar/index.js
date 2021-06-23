@@ -1,9 +1,21 @@
 import React from 'react'
 import styles from './styles.module.css'
-import { Navbar, Nav, FormControl, InputGroup, DropdownButton, Dropdown  } from 'react-bootstrap'
-import {Link} from 'react-router-dom'
+import { Navbar, Nav, FormControl, InputGroup, DropdownButton, Dropdown, Button  } from 'react-bootstrap'
+import {Link, useHistory} from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { logout } from '../../actions/userActions'
 
 function Menu() {
+
+    const history=useHistory()
+    const dispatch=useDispatch()
+
+    const logoutHandler=()=>{
+        console.log('Clicked')
+        dispatch(logout())
+        history.push('/login')
+    }
+
     return (
         <>
             <Navbar className="p-3" bg="light" variant="light">
@@ -30,15 +42,11 @@ function Menu() {
                         <Dropdown.Item href="#">Separated link</Dropdown.Item>
                     </DropdownButton>
                 </InputGroup>
-                <Nav className="ml-auto">
+                <Nav className="ml-auto align-items-center">
                     <Nav.Link href="#features">About</Nav.Link>
                     <Nav.Link href="#pricing">Profile</Nav.Link>
-                    <Link to="">
-                        <Nav.Link className="text-danger">Logout</Nav.Link>
-                    </Link>
-                   
+                    <Nav.Link className="text-danger"><Button className={styles.btn} onClick={logoutHandler}>Logout</Button></Nav.Link>
                 </Nav>
-
             </Navbar>
         </>
     )

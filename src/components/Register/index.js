@@ -23,9 +23,6 @@ function Register() {
     const userLogin=useSelector(state=>state.userLogin)
     const {userInfo:loginUserInfo}=userLogin
 
-
-    console.log(userInfo)
-
     useEffect(() => {
         if(userInfo || loginUserInfo){
             history.push('/home')
