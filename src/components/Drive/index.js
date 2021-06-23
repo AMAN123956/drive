@@ -7,14 +7,7 @@ import Modals from '../Modal/index'
 import emptyImg from '../../assets/img/empty.png'
 import { Button } from 'react-bootstrap'
 function Drive() {
-
-
     const history=useHistory()
-    
-    const backButton=()=>{
-        console.log('Clicked')
-        history.push('/home')
-    }
     return (
         <div className="">
             {/* Navbar */}
@@ -46,7 +39,7 @@ function Drive() {
             {/* Right Part */}
             <div className={styles.rightBox}>
                 {/* Files To Show */}
-                <div className="mt-4"><Button className={styles.backButton} onClick={backButton}>Back</Button></div>
+                <div className="mt-4"><Button className={styles.backButton} onClick={()=>history.push('/home')}>Back</Button></div>
                 <div className="row p-3">
                     {/* One File */}
                     <h2>Drive</h2>
