@@ -3,25 +3,47 @@
     width:18%;
     display:flex;
     flex-direction: column;
- }
- .optionBtn{
-     background:none;
-     border:none;
-     color:gray;
-     font-size:1.2rem;
-     width:100%;
-     padding:5px 30px;
-     height:40px;
-     margin-top:5px;
-     border-radius: 20px;
-     text-align:left;
- }
- .optionBtn:hover{
-     background-color: lightgray;
- }
- .rightBox{
-     width:70%;
- }
- .emptyImg{
-     width:60%;
- }
+}
+.optionBtn{
+    background:none;
+    border:none;
+    color:gray;
+    font-size:1.2rem;
+    width:100%;
+    padding:5px 30px;
+    height:40px;
+    margin-top:5px;
+    border-radius: 20px;
+    text-align:left;
+}
+.optionBtn:hover{
+    text-decoration: none;
+    color: gray;
+}
+.optionBtn:active{
+    box-shadow: 5px 5px 46px #000;
+}
+.rightBox{
+    width:70%;
+}
+.emptyImg{
+    width:60%;
+}
+
+.backButton{
+    color: gray;
+    background-color: transparent;
+    border: none;
+}
+.backButton:hover{
+    color: gray;
+    background-color: lightgray;
+}
+.backButton:active{
+    color: gray;
+    background-color: lightgray;
+}
+.backButton:focus{
+    color: gray;
+    background-color: lightgray;
+}

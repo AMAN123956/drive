@@ -1,11 +1,20 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import styles from './styles.module.css'
 import Navbar from '../Navbar/index'
 // import { useSelector } from 'react-redux'
 import Modals from '../Modal/index'
 import emptyImg from '../../assets/img/empty.png'
+import { Button } from 'react-bootstrap'
 function Drive() {
+
+
+    const history=useHistory()
+    
+    const backButton=()=>{
+        console.log('Clicked')
+        history.push('/home')
+    }
     return (
         <div className="">
             {/* Navbar */}
@@ -37,6 +46,7 @@ function Drive() {
             {/* Right Part */}
             <div className={styles.rightBox}>
                 {/* Files To Show */}
+                <div className="mt-4"><Button className={styles.backButton} onClick={backButton}>Back</Button></div>
                 <div className="row p-3">
                     {/* One File */}
                     <h2>Drive</h2>

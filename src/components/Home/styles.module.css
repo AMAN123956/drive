@@ -18,6 +18,8 @@
 }
 .optionBtn:hover{
     background-color: lightgray;
+    text-decoration: none;
+    color:gray;
 }
 .rightBox{
     width:70%;
