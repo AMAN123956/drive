@@ -17,11 +17,9 @@
     text-align:left;
 }
 .optionBtn:hover{
+    background-color: lightgray;
     text-decoration: none;
-    color: gray;
-}
-.optionBtn:active{
-    box-shadow: 5px 5px 46px #000;
+    color:gray;
 }
 .rightBox{
     width:70%;
