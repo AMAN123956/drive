@@ -17,7 +17,7 @@ function FileForm() {
           if (!error) {
             console.log(photos);
             if(photos.event === 'success'){
-             console.log("cl"+ photos.info.secure_url)
+             console.log(photos.info.secure_url)
             }
           } else {
             console.log(error);
