@@ -21,6 +21,7 @@ function Home() {
     }, [userInfo])
 
     return (
+        
         <div className="">
             {/* Navbar */}
             <Navbar />

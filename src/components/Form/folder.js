@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Modal } from 'react-bootstrap'
+import { Button, Modal,Form } from 'react-bootstrap'
 
 function FolderForm() {
     const [show, setShow] = useState(false);
@@ -16,7 +16,17 @@ function FolderForm() {
               <Modal.Title>AA DRIVE</Modal.Title>
             </Modal.Header>
              <Modal.Body>
-               
+             <Form>
+                  <Form.Group controlId="formBasicName">
+                            <Form.Label>Folder Name</Form.Label>
+                            <Form.Control type="text" placeholder="Enter File Name" />
+                            </Form.Group>
+                           
+                            <br />
+                        <Button variant="primary" type="submit">
+                            Create
+                        </Button>
+                    </Form>
              </Modal.Body>
             <Modal.Footer>
               <Button variant="secondary" onClick={handleClose}>
