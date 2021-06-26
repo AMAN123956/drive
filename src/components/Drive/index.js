@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Link, useHistory} from 'react-router-dom'
 import styles from './styles.module.css'
 import Navbar from '../Navbar/index'
@@ -6,8 +6,23 @@ import Navbar from '../Navbar/index'
 import Modals from '../Modal/index'
 import emptyImg from '../../assets/img/empty.png'
 import { Button } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { setFolder } from '../../actions/currentFolderAction'
 function Drive() {
     const history=useHistory()
+    const dispatch=useDispatch()
+    const currentFolder=useSelector(state=>state.currentFolder)
+
+    const userLogin=useSelector(state=>state.userLogin)
+    const {userInfo}=userLogin
+
+    const setCurrentFolderDrive=()=>{
+        dispatch(setFolder(String(userInfo._id)))
+    }
+
+    useEffect(() => {
+    }, [dispatch,currentFolder])
+
     return (
         <div className="">
             {/* Navbar */}
@@ -19,7 +34,7 @@ function Drive() {
                     {/* Add File/Folder */}
                     <Modals />
                     <br />
-                    <Link to="/drive" className={styles.optionBtn}>
+                    <Link to="/drive" className={styles.optionBtn} onClick={setCurrentFolderDrive}>
                         My Drive
                     </Link>
                     <button className={styles.optionBtn}>
