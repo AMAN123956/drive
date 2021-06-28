@@ -8,6 +8,8 @@ import emptyImg from '../../assets/img/empty.png'
 import { Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { setFolder } from '../../actions/currentFolderAction'
+import axios from 'axios'
+import url from '../../utilities'
 function Drive() {
     const history=useHistory()
     const dispatch=useDispatch()
@@ -16,8 +18,18 @@ function Drive() {
     const userLogin=useSelector(state=>state.userLogin)
     const {userInfo}=userLogin
 
-    const setCurrentFolderDrive=()=>{
-        dispatch(setFolder(String(userInfo._id)))
+    const setCurrentFolderDrive=async ()=>{
+        const config = {
+            headers: {
+            'Content-Type': 'application/json',
+            Authorization:`Bearer ${userInfo.token}`,
+            },
+        }
+        const {data}=await axios.get(`${url}/api/folders/${userInfo._id}`,config)
+        if(data.success)
+        {
+            dispatch(setFolder(String(data.data._id)))
+        }
     }
 
     useEffect(() => {
