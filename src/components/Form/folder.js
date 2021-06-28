@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Button, Modal,Form } from 'react-bootstrap'
 import { useSelector } from 'react-redux';
-import { url } from '../../util/CloudinaryService';
+import url from '../../utilities';
 import Loader1 from '../Loader/Loader-1';
 import Message from '../Message';
 
@@ -44,7 +44,7 @@ function FolderForm() {
                     }
                 }
                 // console.log(config)
-                const {data}=await axios.post(`http://localhost:5000/api/folders/create`,obj,config)
+                const {data}=await axios.post(`${url}/api/folders/create`,obj,config)
                 setloading(true)
                 console.log(data)
                 if(data){
