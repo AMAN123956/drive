@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 import {Link, useHistory} from 'react-router-dom'
 import styles from './styles.module.css'
 import Navbar from '../Navbar/index'
-// import { useSelector } from 'react-redux'
 import Modals from '../Modal/index'
-import emptyImg from '../../assets/img/empty.png'
-import { Button } from 'react-bootstrap'
+import { Button ,Row,Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { setFolder } from '../../actions/currentFolderAction'
 import axios from 'axios'
 import url from '../../utilities'
+import Folder from '../Folder/index'
+import File from '../File/index'
 import Message from '../Message'
 import Loader1 from '../Loader/Loader-1'
 function Drive() {
@@ -70,6 +70,7 @@ function Drive() {
     }, [dispatch,currentFolder])
 
     return (
+    
         <div className="">
             {/* Navbar */}
             <Navbar />
@@ -99,17 +100,39 @@ function Drive() {
            
             {/* Right Part */}
             <div className={styles.rightBox}>
-                {/* Files To Show */}
                 <div className="mt-4"><Button className={styles.backButton} onClick={()=>history.push('/home')}>Back</Button></div>
-                <div className="row p-3">
-                    {/* One File */}
+                <div>
                     {error && <Message variant={'danger'}>{error}</Message>}
                     {loading && <Loader1></Loader1>}
+                    <div>
+                        <h4 className="mt-4 mt-2">Folders</h4>
+                    </div>
                     {
-                        childFiles&&<div></div>
+                        childFolder&&
+                        <Row>
+                        {
+                            childFolder.map((folder)=>{return (
+                                <Col key={folder.folder} sm={12} md={6} lg={4} xl={3}>
+                                    <Folder name={folder.name} id={folder.folder}></Folder>
+                                </Col>
+                            )})
+                        }
+                        </Row>
                     }
+                    <div>
+                        <h4 className="mt-4 mt-2">Files</h4>
+                    </div>
                     {
-                        childFolder&&<div>Folder</div>
+                        childFiles&&
+                        <Row>
+                            {
+                                childFiles.map((file)=>{return (
+                                    <Col key={file.file} sm={12} md={6} lg={4} xl={3}>
+                                        <File name={file.name} id={file.file}></File>
+                                    </Col>
+                                )})
+                            }
+                        </Row>
                     }
                 </div>
             </div>

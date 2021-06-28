@@ -1,10 +1,13 @@
 import React from 'react'
-
-function Folder() {
+import styles from './styles.module.css'
+function Folder({name,id}) {
     return (
-        <div>
-            
-        </div>
+        <>
+            <div className={styles.folder}>
+                <div className={styles.icon}></div>
+                <div className={styles.name}>{name}</div>
+            </div>
+        </>
     )
 }
 
