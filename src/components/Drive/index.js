@@ -102,7 +102,7 @@ function Drive() {
             {/* Right Part */}
             <div className={styles.rightBox}>
                 <div className="mt-4"><Button className={styles.backButton} onClick={()=>history.push('/home')}>Back</Button></div>
-                <div>
+                <div className="p-4">
                     {error && <Message variant={'danger'}>{error}</Message>}
                     {loading && <Loader1></Loader1>}
                     <div>
