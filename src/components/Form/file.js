@@ -24,7 +24,12 @@ function FileForm() {
     const {currentFolder}=useSelector(state=>state.currentFolder)
     const {userInfo}=useSelector(state=>state.userLogin)
 
-    console.log(currentFolder)
+    if(error||message){
+        setTimeout(() => {
+            seterror(null)
+            setmessage(null)
+        }, 3000);
+    }
 
     const beginUpload = tag => {
 
@@ -39,7 +44,7 @@ function FileForm() {
                 // console.log(photos);
             if(photos.event === 'success'){
                 setfileURL(photos.info.secure_url)
-                console.log(photos.info.secure_url)
+                setname(photos.info.original_filename)
             }
             }else{
                 console.log(error);
@@ -57,15 +62,15 @@ function FileForm() {
                     link:String(fileURL),
                     parentFolder:currentFolder
                 }
-                console.log(obj)
+                // console.log(obj)
                 const config = {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization:`Bearer ${userInfo.token}` 
                     }
                 }
-                console.log(config)
-                const {data}=await axios.post(`http://localhost:5000/api/files/create`,obj,config)
+                // console.log(config)
+                const {data}=await axios.post(`${url}/api/files/create`,obj,config)
                 setloading(true)
                 console.log(data)
                 if(data){
@@ -94,7 +99,7 @@ function FileForm() {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>AA DRIVE</Modal.Title>
+                    <Modal.Title>Upload File</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     { img_url !== ""?(
@@ -102,18 +107,14 @@ function FileForm() {
                         alt="preview_img"
                     />): null
                     }
-                    <button
-                        onClick={() => beginUpload()}
-                        className="my-3 btn btn-info mb-5 w-100">
-                        { img_url ===""?("+Upload File"):("+Change File")}</button>
-                    
                     <Form>
                         {error && <Message variant={'danger'}>{error}</Message>}
-                        {message && <Message variant={'success'}>{message}</Message>}
+                        {message && <Message variant={'success'}>{message}</Message>}    
                         <Form.Group controlId="formBasicName">
                             <Form.Label>File Name</Form.Label>
                             <Form.Control type="text" placeholder="Enter File Name" value={name} onChange={(e)=>{setname(e.target.value)}}/>
-                            </Form.Group>
+                            <Button onClick={() => beginUpload()} className="mt-4">{ img_url ===""?("Upload File"):("+Change File")}</Button>
+                        </Form.Group>
                             {
                                 loading ? <Loader1></Loader1> :<Button variant="danger" type="submit" onClick={submitFileHandler} disabled={loading}>Submit</Button>
                             }
