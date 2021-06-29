@@ -18,6 +18,8 @@ function Drive() {
     const dispatch=useDispatch()
     const {currentFolder}=useSelector(state=>state.currentFolder)
 
+    // const {token} = useSelector(state => state.config)
+
     const userLogin=useSelector(state=>state.userLogin)
     const {userInfo}=userLogin
     const [childFolder, setchildFolder] = useState(null)
@@ -41,7 +43,6 @@ function Drive() {
     setCurrentFolderDrive()
 
     useEffect(() => {
-        console.log(currentFolder)
         const config = {
             headers: {
                 'Content-Type': 'application/json',
@@ -52,7 +53,7 @@ function Drive() {
             try{
                 if(currentFolder){
                     setloading(true)
-                    const {data}=await axios.get(`http://localhost:5000/api/folders/details/${currentFolder}`,config)
+                    const {data}=await axios.get(`${url}/api/folders/details/${currentFolder}`,config)
                     setloading(false)
                     if(data.success){
                         setchildFiles(data.data.childFiles)
@@ -73,13 +74,9 @@ function Drive() {
     return (
     
         <div className="">
-            {/* Navbar */}
             <Navbar />
-            {/* Main Content(20:80) */}
             <div className="my-2 d-flex justify-content-flex-start">
-                {/* Left Part(20%) */}
                 <div className={styles.leftSideBar}>
-                    {/* Add File/Folder */}
                     <Modals />
                     <br />
                     <Link to="/drive" className={styles.optionBtn} >

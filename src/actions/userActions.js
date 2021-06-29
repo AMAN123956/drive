@@ -1,9 +1,11 @@
 import { USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS } from "../constants/userConstants"
 import url from "../utilities"
 import axios from 'axios'
+import { resetConfig, setconfig } from "./configActions"
 export const login=(email,password)=>async(dispatch)=>{
     try{
         dispatch ({type:USER_LOGIN_REQUEST})
+        
         const config={
             headers:{
                 'Content-Type':'application/json'
@@ -11,6 +13,7 @@ export const login=(email,password)=>async(dispatch)=>{
         }
         const {data}=await axios.post(`${url}/api/users/login`,{email,password},config)
         if(data.success){    
+            dispatch(setconfig(data.data.token))
             dispatch({
                 type:USER_LOGIN_SUCCESS,
                 payload:data
@@ -36,6 +39,7 @@ export const logout=()=>(dispatch)=>{
     dispatch({
         type:USER_LOGOUT
     })
+    dispatch(resetConfig())
 }
 
 export const register = (name, email, password) => async (dispatch) => {
@@ -56,6 +60,7 @@ export const register = (name, email, password) => async (dispatch) => {
         )
     
         if(data.success){    
+            dispatch(setconfig(data.data.token))
             dispatch({
                 type: USER_REGISTER_SUCCESS,
                 payload: data,
