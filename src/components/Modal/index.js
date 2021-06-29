@@ -21,7 +21,7 @@ function Modals() {
               <Modal.Title>AA DRIVE</Modal.Title>
             </Modal.Header>
           <Modal.Body>
-            <FolderForm />
+            <FolderForm onHide={handleClose}/>
             <FileForm />
              </Modal.Body>
            
