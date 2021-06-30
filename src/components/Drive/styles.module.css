@@ -1,3 +1,6 @@
+body{
+    overflow-y: scroll;
+}
 /* Left SideBar */
 .leftSideBar{
     width:18%;
@@ -72,3 +75,4 @@
     color: gray;
     background-color: lightgray;
 }
+

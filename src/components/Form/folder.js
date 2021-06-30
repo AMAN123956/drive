@@ -21,7 +21,7 @@ function FolderForm() {
     
     const {currentFolder}=useSelector(state=>state.currentFolder)
     const {userInfo}=useSelector(state=>state.userLogin)
-
+    const [count,setcount] = useState(false)
     if(error || message){
       setTimeout(() => {
         seterror(null)
@@ -55,6 +55,8 @@ function FolderForm() {
                     setloading(false)
                     if(data.success){
                         setmessage('Folder created !')
+                        setcount(true)
+                        window.location.reload()
                     }else{
                         seterror(data.error)
                     }
@@ -70,9 +72,10 @@ function FolderForm() {
 
     return (
         <>
-          <Button className={styles.fBtn} onClick={handleShow}>
+        <Button className={styles.fBtn} onClick={handleShow}
+          style={{ display: count === true ? "none" : "block" }}>
           <FontAwesomeIcon icon={faFolderPlus}
-                    className={styles.fIcon} />Folder Upload
+                    className={styles.fIcon} />&nbsp;Folder Upload
           </Button>
     
           <Modal show={show} onHide={handleClose}>

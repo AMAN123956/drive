@@ -116,9 +116,9 @@ function Drive() {
                 <div className="p-4">
                     {error && <Message variant={'danger'}>{error}</Message>}
                     {loading && <Loader1></Loader1>}
-                    <div>
-                        <h4 className="mt-4 mt-2">Folders</h4>
-                    </div>
+                    <div className={styles.fContainer}>
+                        <h4 className="mt-4 mt-2">Folder</h4>
+                    
                     {
                         childFolder&&
                         <Row>
@@ -131,9 +131,10 @@ function Drive() {
                         }
                         </Row>
                     }
-                    <div>
-                        <h4 className="mt-4 mt-2">Files</h4>
                     </div>
+                    <div className={styles.fContainer}>
+                        <h4 className="mt-4 mt-2">Files</h4>
+                    
                     {
                         childFiles&&
                         <Row>
@@ -145,7 +146,8 @@ function Drive() {
                                 )})
                             }
                         </Row>
-                    }
+                            }
+                            </div>
                 </div>
             </div>
            </div>
