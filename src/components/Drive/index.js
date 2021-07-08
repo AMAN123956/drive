@@ -28,6 +28,7 @@ function Drive() {
     const [loading, setloading] = useState(false)
 
     const setCurrentFolderDrive=async ()=>{
+        // console.log('Set folder called')
         const config = {
             headers: {
             'Content-Type': 'application/json',
@@ -39,21 +40,26 @@ function Drive() {
         {
             dispatch(setFolder(String(data.data._id)))
         }
+        // console.log('Folder setup')
     }
     setCurrentFolderDrive()
 
     useEffect(() => {
+        console.log('Use effect called')
         const config = {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization:`Bearer ${userInfo.token}` 
             }
         }
+        console.log(currentFolder)
         const getFolderandFiles=async()=>{
             try{
                 if(currentFolder){
+                    console.log('Folder called')
                     setloading(true)
                     const {data}=await axios.get(`${url}/api/folders/details/${currentFolder}`,config)
+                    console.log(data)
                     setloading(false)
                     if(data.success){
                         setchildFiles(data.data.childFiles)
