@@ -1,20 +1,32 @@
 .folder{
-    border: 1px solid #000;
-    width: 90px;
-    height:100px;
+    width: 160px;
+    height:160px;
+    margin-top:20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items:center;
+    border-radius: 5px;
+    cursor:pointer;
+    transition:0.1s linear all;
+    /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 .icon{
-    padding: 5px;
-    width: 100%;
-    height: 80%;
+   color:gray;
+   margin-top:20px;
+}
+.folderIcon{
+    text-align: center;
+    font-size:5.5rem;
 }
 .name{
     width: 100%;
     padding: 5px;
-    background: #000;
+    background: #20bead;
     color:#fff;
+    text-align: center;
+}
+.folder:hover{
+    transform: scale(1.1);
 }

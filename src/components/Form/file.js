@@ -7,6 +7,9 @@ import axios from 'axios';
 import styles from './styles.module.css'
 import Loader1 from '../Loader/Loader-1';
 import url from '../../utilities';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFileUpload } from '@fortawesome/free-solid-svg-icons'
+
 
 function FileForm() {
     const [img_url, setimg_url] = useState("");
@@ -23,7 +26,7 @@ function FileForm() {
     
     const {currentFolder}=useSelector(state=>state.currentFolder)
     const {userInfo}=useSelector(state=>state.userLogin)
-
+    const [count,setcount] = useState(false)
     if(error||message){
         setTimeout(() => {
             seterror(null)
@@ -45,10 +48,11 @@ function FileForm() {
             if(photos.event === 'success'){
                 setfileURL(photos.info.secure_url)
                 setname(photos.info.original_filename)
+                setimg_url(photos.info.secure_url)
             }
             }else{
                 console.log(error);
-                setimg_url(photos.info.secure_url)
+               
             }
         })
     }
@@ -77,6 +81,9 @@ function FileForm() {
                     setloading(false)
                     if(data.success){
                         setmessage('File created !')
+                        setcount(true)
+                        window.location.reload()
+                        
                     }else{
                         seterror(data.error)
                     }
@@ -93,8 +100,10 @@ function FileForm() {
 
     return (
         <>
-            <Button className="btn btn-primary mx-2" onClick={handleShow}>
-                File Upload
+            <Button className={styles.fBtn} onClick={handleShow}
+             style={{ display: count === true ? "none" : "block" }}>
+                <FontAwesomeIcon icon={faFileUpload}
+                    className={styles.fIcon} />&nbsp;File Upload
             </Button>
 
             <Modal show={show} onHide={handleClose}>

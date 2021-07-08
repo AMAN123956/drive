@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {Link, useHistory} from 'react-router-dom'
 import styles from './styles.module.css'
 import Navbar from '../Navbar/index'
-import Modals from '../Modal/index'
+// import Modals from '../Modal/index'
 import { Button ,Row,Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { setFolder } from '../../actions/currentFolderAction'
@@ -12,6 +12,8 @@ import Folder from '../Folder/index'
 import File from '../File/index'
 import Message from '../Message'
 import Loader1 from '../Loader/Loader-1'
+import FileForm from '../Form/file'
+import FolderForm from '../Form/folder'
 function Drive() {
 
     const history=useHistory()
@@ -26,7 +28,12 @@ function Drive() {
     const [childFiles, setchildFiles] = useState(null)
     const [error, seterror] = useState(null)
     const [loading, setloading] = useState(false)
-
+    /* New Button */
+    const [count, setcount] = useState(false)
+    
+    const handleNew = () => {
+        setcount(!count)
+    }
     const setCurrentFolderDrive=async ()=>{
         // console.log('Set folder called')
         const config = {
@@ -83,7 +90,14 @@ function Drive() {
             <Navbar />
             <div className="my-2 d-flex justify-content-flex-start">
                 <div className={styles.leftSideBar}>
-                    <Modals />
+                <Button className={styles.addFileBtn} onClick={handleNew}>
+                    + New
+                    </Button>
+                    {count === true ? (<div className={styles.selectBox}>
+                        <FolderForm />
+                        <FileForm />
+                    </div>): null }
+                    
                     <br />
                     <Link to="/drive" className={styles.optionBtn} >
                         My Drive
@@ -108,9 +122,9 @@ function Drive() {
                 <div className="p-4">
                     {error && <Message variant={'danger'}>{error}</Message>}
                     {loading && <Loader1></Loader1>}
-                    <div>
-                        <h4 className="mt-4 mt-2">Folders</h4>
-                    </div>
+                    <div className={styles.fContainer}>
+                        <h4 className="mt-4 mt-2">Folder</h4>
+                    
                     {
                         childFolder&&
                         <Row>
@@ -123,9 +137,10 @@ function Drive() {
                         }
                         </Row>
                     }
-                    <div>
-                        <h4 className="mt-4 mt-2">Files</h4>
                     </div>
+                    <div className={styles.fContainer}>
+                        <h4 className="mt-4 mt-2">Files</h4>
+                    
                     {
                         childFiles&&
                         <Row>
@@ -137,7 +152,8 @@ function Drive() {
                                 )})
                             }
                         </Row>
-                    }
+                            }
+                            </div>
                 </div>
             </div>
            </div>
