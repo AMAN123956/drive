@@ -7,7 +7,7 @@ const Folders = ({match}) => {
 
     return (
         <div>
-            
+            {id}
         </div>
     )
 }
