@@ -1,0 +1,26 @@
+
+.rightBox{
+    width:70%;
+}
+.emptyImg{
+    width:60%;
+}
+
+.backButton{
+    color: gray;
+    background-color: transparent;
+    border: none;
+}
+.backButton:hover{
+    color: gray;
+    background-color: lightgray;
+}
+.backButton:active{
+    color: gray;
+    background-color: lightgray;
+}
+.backButton:focus{
+    color: gray;
+    background-color: lightgray;
+}
+

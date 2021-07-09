@@ -88,20 +88,19 @@ function Drive() {
             
             {/* Right Part */}
             <div className={styles.rightBox}>
-                <div className="mt-4"><Button className={styles.backButton} onClick={()=>history.push('/home')}>Back</Button></div>
-                <div className="p-4">
+                <div className="mt-2"><Button className={styles.backButton} onClick={()=>history.push('/home')}>Back</Button></div>
+                <div className="p-1">
                     {error && <Message variant={'danger'}>{error}</Message>}
-                    {loading && <Loader1></Loader1>}
+                        {loading && <Loader1></Loader1>}
+                        <h4 className="mt-3">Folder</h4>
                     <div className={styles.fContainer}>
-                        <h4 className="mt-4 mt-2">Folder</h4>
-                    
-                    {
+                        {
                         childFolder&&
                         <Row>
                         {
                             childFolder.map((folder)=>{return (
                                 <Col key={folder.folder} sm={12} md={6} lg={4} xl={3}>
-                                    <Link to={`/folder/${folder._id}`}>
+                                    <Link to={`/folder/${folder._id}`} style={{textDecoration:'none'}}>
                                         <Folder name={folder.name} id={folder.folder} ></Folder>
                                     </Link>
                                 </Col>
@@ -110,10 +109,9 @@ function Drive() {
                         </Row>
                     }
                     </div>
+                    <h4 className="mt-3">Files</h4>
                     <div className={styles.fContainer}>
-                        <h4 className="mt-4 mt-2">Files</h4>
-                    
-                    {
+                       {
                         childFiles&&
                         <Row>
                             {
