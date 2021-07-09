@@ -10,8 +10,7 @@ function File({ name, id }) {
 
             <div className={styles.file}>
                 <div class={styles.header}>
-
-                    <DropdownButton id="dropdown-basic-button"  title="Choose Option">
+                    <DropdownButton id="dropdown-basic-button"  title="" className={styles.dropDown}>
                         <Dropdown.Item href="#/action-1" type="button">Copy</Dropdown.Item>
                         <Dropdown.Item href="#/action-2">Delete</Dropdown.Item>
                         <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
