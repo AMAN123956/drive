@@ -1,6 +1,4 @@
-body{
-    overflow-y: scroll;
-}
+
 /* Left SideBar */
 .leftSideBar{
     width:18%;
@@ -53,7 +51,7 @@ body{
     color:gray;
 }
 .rightBox{
-    width:70%;
+    width:80%;
 }
 .emptyImg{
     width:60%;
@@ -77,3 +75,34 @@ body{
     background-color: lightgray;
 }
 
+/* fcontainer */
+.fContainer{
+    margin-top: 0px;
+   max-height:30vh;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 5px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #20bead; 
+    border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #20bead; 
+  }
