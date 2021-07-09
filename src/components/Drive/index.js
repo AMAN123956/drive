@@ -28,14 +28,12 @@ function Drive() {
     const [childFiles, setchildFiles] = useState(null)
     const [error, seterror] = useState(null)
     const [loading, setloading] = useState(false)
-    /* New Button */
     const [count, setcount] = useState(false)
     
     const handleNew = () => {
         setcount(!count)
     }
     const setCurrentFolderDrive=async ()=>{
-        // console.log('Set folder called')
         const config = {
             headers: {
             'Content-Type': 'application/json',
@@ -47,19 +45,20 @@ function Drive() {
         {
             dispatch(setFolder(String(data.data._id)))
         }
-        // console.log('Folder setup')
     }
-    setCurrentFolderDrive()
+
+
 
     useEffect(() => {
-        console.log('Use effect called')
+        setCurrentFolderDrive()
+        const userInfoFromStorage=localStorage.getItem('driveUserInfo')?JSON.parse(localStorage.getItem('driveUserInfo')):null
+
         const config = {
             headers: {
                 'Content-Type': 'application/json',
-                Authorization:`Bearer ${userInfo.token}` 
+                Authorization:`Bearer ${userInfoFromStorage.token}` 
             }
         }
-        console.log(currentFolder)
         const getFolderandFiles=async()=>{
             try{
                 if(currentFolder){
@@ -108,14 +107,14 @@ function Drive() {
                     <button className={styles.optionBtn}>
                         Shared with me
                     </button>
-                     <button className={styles.optionBtn}>
+                        <button className={styles.optionBtn}>
                         Recent
                     </button>
                     <button className={styles.optionBtn}>
                         Starred
                     </button>
                 </div>
-           
+            
             {/* Right Part */}
             <div className={styles.rightBox}>
                 <div className="mt-4"><Button className={styles.backButton} onClick={()=>history.push('/home')}>Back</Button></div>
@@ -156,7 +155,7 @@ function Drive() {
                             </div>
                 </div>
             </div>
-           </div>
+            </div>
         </div>
     )
 }

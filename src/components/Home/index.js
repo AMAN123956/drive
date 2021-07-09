@@ -5,10 +5,16 @@ import { Link,useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Modals from '../Modal/index'
 import emptyImg from '../../assets/img/empty.png'
+import axios from 'axios'
+import url from '../../utilities'
+import { useDispatch } from 'react-redux'
+import { setFolder } from '../../actions/currentFolderAction'
 
 function Home() {
 
+    
     const history=useHistory()
+    const dispatch = useDispatch()
     
     const userLogin=useSelector(state=>state.userLogin)
     const {userInfo}=userLogin
@@ -19,6 +25,23 @@ function Home() {
         }
     // eslint-disable-next-line
     }, [userInfo])
+
+    const setCurrentFolderDrive=async ()=>{
+        
+        console.log('Set folder called')
+        const config = {
+            headers: {
+            'Content-Type': 'application/json',
+            Authorization:`Bearer ${userInfo.token}`,
+            },
+        }
+        const {data}=await axios.get(`${url}/api/folders/${userInfo._id}`,config)
+        if(data.success)
+        {
+            dispatch(setFolder(String(data.data._id)))
+        }
+        // console.log('Folder setup')
+    }
 
     return (
         
@@ -32,7 +55,7 @@ function Home() {
                     {/* Add File/Folder */}
                     <Modals />
                     <br />
-                    <Link to="/drive" className={styles.optionBtn}>
+                    <Link to="/drive" className={styles.optionBtn} onClick={setCurrentFolderDrive}>
                         My Drive
                     </Link>
                     <button className={styles.optionBtn}>
