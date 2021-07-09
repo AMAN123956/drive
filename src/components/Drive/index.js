@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import {Link, useHistory} from 'react-router-dom'
 import styles from './styles.module.css'
 import Navbar from '../Navbar/index'
+import Sidebar from '../Sidebar/index'
 // import Modals from '../Modal/index'
-import { Button ,Row,Col } from 'react-bootstrap'
+import { Button,Row,Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { setFolder } from '../../actions/currentFolderAction'
 import axios from 'axios'
@@ -12,8 +13,7 @@ import Folder from '../Folder/index'
 import File from '../File/index'
 import Message from '../Message'
 import Loader1 from '../Loader/Loader-1'
-import FileForm from '../Form/file'
-import FolderForm from '../Form/folder'
+
 function Drive() {
 
     const history=useHistory()
@@ -28,11 +28,7 @@ function Drive() {
     const [childFiles, setchildFiles] = useState(null)
     const [error, seterror] = useState(null)
     const [loading, setloading] = useState(false)
-    const [count, setcount] = useState(false)
     
-    const handleNew = () => {
-        setcount(!count)
-    }
     const setCurrentFolderDrive=async ()=>{
         const config = {
             headers: {
@@ -88,32 +84,7 @@ function Drive() {
         <div className="">
             <Navbar />
             <div className="my-2 d-flex justify-content-flex-start">
-                <div className={styles.leftSideBar}>
-                <Button className={styles.addFileBtn} onClick={handleNew}>
-                    + New
-                    </Button>
-                    {count === true ? (<div className={styles.selectBox}>
-                        <FolderForm />
-                        <FileForm />
-                    </div>): null }
-                    
-                    <br />
-                    <Link to="/drive" className={styles.optionBtn} >
-                        My Drive
-                    </Link>
-                    <button className={styles.optionBtn}>
-                        Computers
-                    </button>
-                    <button className={styles.optionBtn}>
-                        Shared with me
-                    </button>
-                        <button className={styles.optionBtn}>
-                        Recent
-                    </button>
-                    <button className={styles.optionBtn}>
-                        Starred
-                    </button>
-                </div>
+             <Sidebar />
             
             {/* Right Part */}
             <div className={styles.rightBox}>
