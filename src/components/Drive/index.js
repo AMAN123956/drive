@@ -60,14 +60,14 @@ function Drive() {
                 if(currentFolder){
                     console.log('Folder called')
                     setloading(true)
-                    const {data}=await axios.get(`${url}/api/folders/details/${currentFolder}`,config)
+                    const {data}=await axios.get(`http://localhost:5000/api/folders/details/${currentFolder}`,config)
                     console.log(data)
                     setloading(false)
                     if(data.success){
                         setchildFiles(data.data.childFiles)
                         setchildFolder(data.data.childFolder)
                     }else{
-                        seterror('Some Error Occured')
+                        seterror(`${data.error}`)
                     }
                 }
             }catch(e){
