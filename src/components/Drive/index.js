@@ -130,7 +130,9 @@ function Drive() {
                         {
                             childFolder.map((folder)=>{return (
                                 <Col key={folder.folder} sm={12} md={6} lg={4} xl={3}>
-                                    <Folder name={folder.name} id={folder.folder}></Folder>
+                                    <Link to={`/folder/${folder._id}`}>
+                                        <Folder name={folder.name} id={folder.folder} ></Folder>
+                                    </Link>
                                 </Col>
                             )})
                         }
