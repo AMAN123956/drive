@@ -122,7 +122,7 @@ function Drive() {
                             {
                                 childFiles.map((file)=>{return (
                                     <Col key={file.file} sm={12} md={6} lg={4} xl={3}>
-                                        <File name={file.name} id={file.file}></File>
+                                        <File name={file.name} id={file.file} link={file.link}></File>
                                     </Col>
                                 )})
                             }
