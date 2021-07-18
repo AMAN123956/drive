@@ -98,8 +98,9 @@ function Drive() {
                     {error && <Message variant={'danger'}>{error}</Message>}
                     {!folderId &&<Loader1></Loader1>}
                     {loading && <Loader1></Loader1>}
-                    <h4 className="mt-3">Folder</h4>
+                    
                     <div className={styles.fContainer}>
+                    <h4 className="mt-3">Folder</h4>
                         {
                         childFolder&&
                         <Row>
@@ -114,9 +115,9 @@ function Drive() {
                         }
                         </Row>
                     }
-                    </div>
+                    {/* </div> */}
                     <h4 className="mt-3">Files</h4>
-                    <div className={styles.fContainer}>
+                    {/* <div className={styles.fContainer}>/ */}
                        {
                         childFiles&&
                         <Row>
@@ -128,8 +129,8 @@ function Drive() {
                                 )})
                             }
                         </Row>
-                            }
-                            </div>
+                        }
+                    </div>
                 </div>
             </div>
             </div>
