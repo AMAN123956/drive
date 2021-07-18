@@ -28,6 +28,7 @@ function Drive() {
     const [childFiles, setchildFiles] = useState(null)
     const [error, seterror] = useState(null)
     const [loading, setloading] = useState(false)
+    const [folderId, setfolderId] = useState(null)
     
     const setCurrentFolderDrive=async ()=>{
         const config = {
@@ -39,6 +40,7 @@ function Drive() {
         const {data}=await axios.get(`${url}/api/folders/${userInfo._id}`,config)
         if(data.success)
         {
+            setfolderId(data.data._id)
             dispatch(setFolder(String(data.data._id)))
         }
     }
@@ -61,7 +63,7 @@ function Drive() {
                     console.log('Folder called')
                     setloading(true)
                     console.log(currentFolder)
-                    const {data}=await axios.get(`http://localhost:5000/api/folders/details/${currentFolder}`,config)
+                    const {data}=await axios.get(`http://localhost:5000/api/folders/details/${folderId}`,config)
                     console.log(data)
                     setloading(false)
                     if(data.success){
