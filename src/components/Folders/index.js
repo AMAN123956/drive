@@ -12,6 +12,7 @@ import Folder from '../Folder/index'
 import File from '../File/index'
 import Message from '../Message'
 import Loader1 from '../Loader/Loader-1'
+import url from '../../utilities';
 
 
 const Folders = ({ match }) => {
@@ -47,7 +48,7 @@ const Folders = ({ match }) => {
                 if(id){
                     console.log('Folder called')
                     setloading(true)
-                    const {data}=await axios.get(`http://localhost:5000/api/folders/details/${id}`,config)
+                    const {data}=await axios.get(`${url}/api/folders/details/${id}`,config)
                     console.log(data)
                     setloading(false)
                     if(data.success){

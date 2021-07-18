@@ -63,7 +63,7 @@ function Drive() {
                     console.log('Folder called')
                     setloading(true)
                     console.log(currentFolder)
-                    const {data}=await axios.get(`http://localhost:5000/api/folders/details/${folderId}`,config)
+                    const {data}=await axios.get(`${url}/api/folders/details/${folderId}`,config)
                     console.log(data)
                     setloading(false)
                     if(data.success){
