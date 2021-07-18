@@ -11,7 +11,7 @@ function Menu() {
     const dispatch=useDispatch()
 
     const logoutHandler=()=>{
-        console.log('Clicked')
+        // console.log('Clicked')
         dispatch(logout())
         history.push('/login')
     }

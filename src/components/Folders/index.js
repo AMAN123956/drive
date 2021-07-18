@@ -46,10 +46,10 @@ const Folders = ({ match }) => {
         const getFolderandFiles=async()=>{
             try{
                 if(id){
-                    console.log('Folder called')
+                    // console.log('Folder called')
                     setloading(true)
                     const {data}=await axios.get(`${url}/api/folders/details/${id}`,config)
-                    console.log(data)
+                    // console.log(data)
                     setloading(false)
                     if(data.success){
                         setchildFiles(data.data.childFiles)

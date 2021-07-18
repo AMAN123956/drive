@@ -51,7 +51,7 @@ function FolderForm() {
                 // console.log(config)
                 const {data}=await axios.post(`${url}/api/folders/create`,obj,config)
                 setloading(true)
-                console.log(data)
+                // console.log(data)
                 if(data){
                     setloading(false)
                     if(data.success){

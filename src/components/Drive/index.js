@@ -22,8 +22,8 @@ function Drive() {
 
     // const {token} = useSelector(state => state.config)
 
-    const userLogin=useSelector(state=>state.userLogin)
-    const {userInfo}=userLogin
+    // const userLogin=useSelector(state=>state.userLogin)
+    // const {userInfo}=userLogin
     const [childFolder, setchildFolder] = useState(null)
     const [childFiles, setchildFiles] = useState(null)
     const [error, seterror] = useState(null)
@@ -31,15 +31,18 @@ function Drive() {
     const [folderId, setfolderId] = useState(null)
     
     const setCurrentFolderDrive=async ()=>{
+        // console.log('Set current folder called')
+        const userInfoFromStorage=localStorage.getItem('driveUserInfo')?JSON.parse(localStorage.getItem('driveUserInfo')):null
         const config = {
             headers: {
             'Content-Type': 'application/json',
-            Authorization:`Bearer ${userInfo.token}`,
+            Authorization:`Bearer ${userInfoFromStorage.token}`,
             },
         }
-        const {data}=await axios.get(`${url}/api/folders/${userInfo._id}`,config)
+        const {data}=await axios.get(`${url}/api/folders/${userInfoFromStorage._id}`,config)
         if(data.success)
         {
+            // console.log(data.success)
             setfolderId(data.data._id)
             dispatch(setFolder(String(data.data._id)))
         }
@@ -60,10 +63,10 @@ function Drive() {
         const getFolderandFiles=async()=>{
             try{
                 if(folderId){
-                    console.log('Folder called')
+                    // console.log('Folder called')
                     setloading(true)
                     const {data}=await axios.get(`${url}/api/folders/details/${folderId}`,config)
-                    console.log(data)
+                    // console.log(data)
                     setloading(false)
                     if(data.success){
                         setchildFiles(data.data.childFiles)
@@ -93,8 +96,9 @@ function Drive() {
                 <div className="mt-2"><Button className={styles.backButton} onClick={()=>history.push('/home')}>Back</Button></div>
                 <div className="p-1">
                     {error && <Message variant={'danger'}>{error}</Message>}
-                        {loading && <Loader1></Loader1>}
-                        <h4 className="mt-3">Folder</h4>
+                    {!folderId &&<Loader1></Loader1>}
+                    {loading && <Loader1></Loader1>}
+                    <h4 className="mt-3">Folder</h4>
                     <div className={styles.fContainer}>
                         {
                         childFolder&&
