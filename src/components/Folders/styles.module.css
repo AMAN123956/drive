@@ -24,3 +24,9 @@
     background-color: lightgray;
 }
 
+.fContainer{
+    margin-top: 0px;
+   max-height:80vh;
+    overflow-y:auto;
+    overflow-x:hidden;
+}

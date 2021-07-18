@@ -115,9 +115,7 @@ function Drive() {
                         }
                         </Row>
                     }
-                    {/* </div> */}
                     <h4 className="mt-3">Files</h4>
-                    {/* <div className={styles.fContainer}>/ */}
                        {
                         childFiles&&
                         <Row>
