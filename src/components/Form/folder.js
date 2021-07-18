@@ -20,7 +20,7 @@ function FolderForm() {
     const handleShow = () => setShow(true);
     
     const {currentFolder}=useSelector(state=>state.currentFolder)
-    const {userInfo}=useSelector(state=>state.userLogin)
+    // const {userInfo}=useSelector(state=>state.userLogin)
     const [count,setcount] = useState(false)
     if(error || message){
       setTimeout(() => {
@@ -36,6 +36,7 @@ function FolderForm() {
     const submitFolderHandler=async (e)=>{
       e.preventDefault()
         try{
+          const userInfoFromStorage=localStorage.getItem('driveUserInfo')?JSON.parse(localStorage.getItem('driveUserInfo')):null
             if(name){
                 let obj={
                     name:name,
@@ -44,7 +45,7 @@ function FolderForm() {
                 const config = {
                     headers: {
                         'Content-Type': 'application/json',
-                        Authorization:`Bearer ${userInfo.token}` 
+                        Authorization:`Bearer ${userInfoFromStorage.token}` 
                     }
                 }
                 // console.log(config)

@@ -25,7 +25,7 @@ function FileForm() {
 
     
     const {currentFolder}=useSelector(state=>state.currentFolder)
-    const {userInfo}=useSelector(state=>state.userLogin)
+    // const {userInfo}=useSelector(state=>state.userLogin)
     const [count,setcount] = useState(false)
     if(error||message){
         setTimeout(() => {
@@ -60,6 +60,7 @@ function FileForm() {
     const submitFileHandler=async (e)=>{
         e.preventDefault()
         try{
+            const userInfoFromStorage=localStorage.getItem('driveUserInfo')?JSON.parse(localStorage.getItem('driveUserInfo')):null      
             if(fileURL && name){
                 let obj={
                     name:name,
@@ -70,7 +71,7 @@ function FileForm() {
                 const config = {
                     headers: {
                         'Content-Type': 'application/json',
-                        Authorization:`Bearer ${userInfo.token}` 
+                        Authorization:`Bearer ${userInfoFromStorage.token}` 
                     }
                 }
                 // console.log(config)
