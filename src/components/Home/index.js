@@ -51,20 +51,20 @@ function Home() {
                     {/* Add File/Folder */}
                     <Modals />
                     <br />
+                    <Link to="/home" className={styles.optionBtn} >
+                        Home
+                    </Link>
                     <Link to="/drive" className={styles.optionBtn} >
                         My Drive
                     </Link>
                     <button className={styles.optionBtn}>
                         Computers
                     </button>
-                    <button className={styles.optionBtn}>
-                        Shared with me
-                    </button>
-                     <button className={styles.optionBtn}>
+                        <button className={styles.optionBtn}>
                         Recent
                     </button>
                     <button className={styles.optionBtn}>
-                        Starred
+                        Bin
                     </button>
                 </div>
            
