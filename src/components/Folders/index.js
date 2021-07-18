@@ -24,6 +24,7 @@ const Folders = ({ match }) => {
     const [childFiles, setchildFiles] = useState(null)
     const [error, seterror] = useState(null)
     const [loading, setloading] = useState(false)
+    const [parentFolder, setparentFolder] = useState(null)
 
     const setCurrentFolderDrive=async ()=>{
         if(id)
@@ -43,17 +44,18 @@ const Folders = ({ match }) => {
         }
         const getFolderandFiles=async()=>{
             try{
-                if(currentFolder){
+                if(id){
                     console.log('Folder called')
                     setloading(true)
-                    const {data}=await axios.get(`http://localhost:5000/api/folders/details/${currentFolder}`,config)
+                    const {data}=await axios.get(`http://localhost:5000/api/folders/details/${id}`,config)
                     console.log(data)
                     setloading(false)
                     if(data.success){
                         setchildFiles(data.data.childFiles)
                         setchildFolder(data.data.childFolder)
+                        setparentFolder(data.data.parentFolder)
                     }else{
-                        seterror('Some Error Occured')
+                        seterror(data.error)
                     }
                 }
             }catch(e){
@@ -63,7 +65,7 @@ const Folders = ({ match }) => {
         }
         getFolderandFiles()
     // eslint-disable-next-line
-    }, [dispatch,currentFolder])
+    }, [dispatch,currentFolder,id])
 
     return (
         <div className="">
@@ -71,7 +73,7 @@ const Folders = ({ match }) => {
             <div className="my-2 d-flex justify-content-flex-start">
                 <Sidebar />
                 <div className={styles.rightBox}>
-                    <div className="mt-4"><Button className={styles.backButton} onClick={()=>history.push('/drive')}>Back</Button></div>
+                    <div className="mt-4"><Button className={styles.backButton} onClick={()=>history.push(`/folder/${parentFolder}`)}>Back</Button></div>
                     <div className="p-4">
                     {error && <Message variant={'danger'}>{error}</Message>}
                     {loading && <Loader1></Loader1>}
@@ -83,7 +85,7 @@ const Folders = ({ match }) => {
                             {
                                 childFolder.map((folder)=>{return (
                                     <Col key={folder.folder} sm={12} md={6} lg={4} xl={3}>
-                                        <Link to={`/folder/${folder._id}`}>
+                                        <Link to={`/folder/${folder.folder}`}>
                                             <Folder name={folder.name} id={folder.folder} ></Folder>
                                         </Link>
                                     </Col>

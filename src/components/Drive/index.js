@@ -60,6 +60,7 @@ function Drive() {
                 if(currentFolder){
                     console.log('Folder called')
                     setloading(true)
+                    console.log(currentFolder)
                     const {data}=await axios.get(`http://localhost:5000/api/folders/details/${currentFolder}`,config)
                     console.log(data)
                     setloading(false)
@@ -100,7 +101,7 @@ function Drive() {
                         {
                             childFolder.map((folder)=>{return (
                                 <Col key={folder.folder} sm={12} md={6} lg={4} xl={3}>
-                                    <Link to={`/folder/${folder._id}`} style={{textDecoration:'none'}}>
+                                    <Link to={`/folder/${folder.folder}`} style={{textDecoration:'none'}}>
                                         <Folder name={folder.name} id={folder.folder} ></Folder>
                                     </Link>
                                 </Col>
