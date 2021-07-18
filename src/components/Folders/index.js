@@ -25,7 +25,7 @@ const Folders = ({ match }) => {
     const [childFiles, setchildFiles] = useState(null)
     const [error, seterror] = useState(null)
     const [loading, setloading] = useState(false)
-    const [parentFolder, setparentFolder] = useState(null)
+    const [, setparentFolder] = useState(null)
 
     const setCurrentFolderDrive=async ()=>{
         if(id)
@@ -74,7 +74,7 @@ const Folders = ({ match }) => {
             <div className="my-2 d-flex justify-content-flex-start">
                 <Sidebar />
                 <div className={styles.rightBox}>
-                    <div className="mt-4"><Button className={styles.backButton} onClick={()=>history.push(`/folder/${parentFolder}`)}>Back</Button></div>
+                    <div className="mt-4"><Button className={styles.backButton} onClick={()=>history.goBack()}>Back</Button></div>
                     <div className="p-4">
                     {error && <Message variant={'danger'}>{error}</Message>}
                     {loading && <Loader1></Loader1>}
