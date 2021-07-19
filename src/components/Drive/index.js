@@ -108,7 +108,12 @@ function Drive() {
                         childFolder&&
                         <Row>
                         {
-                            childFolder.map((folder)=>{return (
+                            childFolder.sort((a,b)=>{
+                                if(a.name<b.name)
+                                    return -1
+                                else
+                                    return 1
+                            }).map((folder)=>{return (
                                 <Col key={folder.folder} sm={12} md={6} lg={4} xl={3}>
                                     <Folder name={folder.name} id={folder.folder} link={`/folder/${folder.folder}`}></Folder>
                                 </Col>
@@ -124,7 +129,12 @@ function Drive() {
                     childFiles&&
                     <Row>
                         {
-                            childFiles.map((file)=>{return (
+                            childFiles.sort((a,b)=>{
+                                if(a.name<b.name)
+                                    return -1
+                                else
+                                    return 1
+                            }).map((file)=>{return (
                                 <Col key={file.file} sm={12} md={6} lg={4} xl={3}>
                                     <File name={file.name} id={file.file} link={file.link}></File>
                                 </Col>

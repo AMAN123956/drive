@@ -39,13 +39,14 @@ function FileForm() {
         const uploadOptions = {
             cloudName: 'dtqzhg98l',
             tags: [tag,"my image"],
-            uploadPreset: 'vdkuxmpd'
+            uploadPreset: 'vdkuxmpd',
         };
 
         openUploadWidget(uploadOptions, (error, photos) => {
             if (!error) {
                 // console.log(photos);
             if(photos.event === 'success'){
+                // console.log(photos.info.secure_url)
                 setfileURL(photos.info.secure_url)
                 setname(photos.info.original_filename)
                 setimg_url(photos.info.secure_url)
@@ -67,7 +68,7 @@ function FileForm() {
                     link:String(fileURL),
                     parentFolder:currentFolder
                 }
-                // console.log(obj)
+                console.log(obj)
                 const config = {
                     headers: {
                         'Content-Type': 'application/json',
