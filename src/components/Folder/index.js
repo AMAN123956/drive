@@ -3,6 +3,7 @@ import styles from './styles.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFolderPlus } from '@fortawesome/free-solid-svg-icons'
 import { Dropdown, DropdownButton,Button, Modal } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 function Folder({ name, id, link }) {
     const [show, setShow] = useState(false);
@@ -36,12 +37,11 @@ function Folder({ name, id, link }) {
                         <Dropdown.Item onClick={handleShow}>Delete</Dropdown.Item>
                     </DropdownButton>
                 </div>
-                <div className={styles.icon}>
-                    <a href={link} target='_blank' rel="noreferrer">
-                        <FontAwesomeIcon icon={faFolderPlus}
-                            className={styles.folderIcon} />
-                    </a>
-                </div>
+                <Link to={link} >
+                    <div className={styles.icon}>        
+                        <FontAwesomeIcon icon={faFolderPlus} className={styles.folderIcon} />
+                    </div>
+                </Link>
                 <div className={styles.name}>{name}</div>
             </div>
         </>
