@@ -11,7 +11,7 @@ import Message from '../Message'
 function Folder({ name, id, link }) {
     const [show, setShow] = useState(false);
     const [error, seterror] = useState(null)
-    const [loading, setloading] = useState(null)
+    const [, setloading] = useState(null)
     const [message, setmessage] = useState(null)
 
     const handleClose = () => setShow(false);
