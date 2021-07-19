@@ -67,17 +67,16 @@ function Home() {
                         Bin
                     </button>
                 </div>
-           
             {/* Right Part */}
             <div className={styles.rightBox}>
                 {/* Files To Show */}
                 <div className="row p-3">
                     {/* One File */}
                     <h2>Recent</h2>
-                   <img src={emptyImg} className={styles.emptyImg} alt="empty-img" /> 
+                    <img src={emptyImg} className={styles.emptyImg} alt="empty-img" /> 
                 </div>
             </div>
-           </div>
+            </div>
         </div>
     )
 }
