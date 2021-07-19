@@ -81,6 +81,9 @@ const Folders = ({ match }) => {
                     <div className={styles.fContainer}>
                         <h4 className="mt-4 mt-2">Folder</h4>
                         {
+                            childFolder&&childFolder.length===0&&<div className={styles.empty}>No Folders</div>
+                        }
+                        {
                             childFolder&&
                             <Row>
                             {
@@ -93,6 +96,9 @@ const Folders = ({ match }) => {
                             </Row>
                         }
                         <h4 className="mt-4 mt-2">Files</h4>
+                        {
+                            childFiles&&childFiles.length===0&&<div className={styles.empty}>No Files</div>
+                        }
                         {
                             childFiles&&
                             <Row>

@@ -101,7 +101,10 @@ function Drive() {
                     
                     <div className={styles.fContainer}>
                     <h4 className="mt-3">Folder</h4>
-                        {
+                    {
+                        childFolder&&childFolder.length===0&&<div className={styles.empty}>No Folders</div>
+                    }
+                    {
                         childFolder&&
                         <Row>
                         {
@@ -114,18 +117,21 @@ function Drive() {
                         </Row>
                     }
                     <h4 className="mt-3">Files</h4>
-                       {
-                        childFiles&&
-                        <Row>
-                            {
-                                childFiles.map((file)=>{return (
-                                    <Col key={file.file} sm={12} md={6} lg={4} xl={3}>
-                                        <File name={file.name} id={file.file} link={file.link}></File>
-                                    </Col>
-                                )})
-                            }
-                        </Row>
+                    {
+                        childFiles&&childFiles.length===0&&<div className={styles.empty}>No Files</div>
+                    }
+                    {
+                    childFiles&&
+                    <Row>
+                        {
+                            childFiles.map((file)=>{return (
+                                <Col key={file.file} sm={12} md={6} lg={4} xl={3}>
+                                    <File name={file.name} id={file.file} link={file.link}></File>
+                                </Col>
+                            )})
                         }
+                    </Row>
+                    }
                     </div>
                 </div>
             </div>
