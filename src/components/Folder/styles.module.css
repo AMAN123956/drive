@@ -33,3 +33,13 @@
     /* transform: scale(1.05); */
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.483);
 }
+
+.header{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    left: 120px;
+}
+.header.dropDown{
+    display: none;
+}

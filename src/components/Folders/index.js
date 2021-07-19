@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 import { Button ,Row,Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 import { setFolder } from '../../actions/currentFolderAction';
-import { Link,useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 // import url from '../../utilities';
 import axios from 'axios';
 import Folder from '../Folder/index'
@@ -86,9 +86,7 @@ const Folders = ({ match }) => {
                             {
                                 childFolder.map((folder)=>{return (
                                     <Col key={folder.folder} sm={12} md={6} lg={4} xl={3}>
-                                        <Link to={`/folder/${folder.folder}`} style={{textDecoration:'none'}}>
-                                            <Folder name={folder.name} id={folder.folder} ></Folder>
-                                        </Link>
+                                       <Folder name={folder.name} id={folder.folder} link={`/folder/${folder.folder}`} ></Folder>
                                     </Col>
                                 )})
                             }
