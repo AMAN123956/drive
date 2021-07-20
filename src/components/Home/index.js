@@ -3,8 +3,11 @@ import styles from './styles.module.css'
 import Navbar from '../Navbar/index'
 import { Link,useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import Modals from '../Modal/index'
+// import Modals from '../Modal/index'
 import emptyImg from '../../assets/img/empty.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHome, faDatabase,faDesktop,faCalendarWeek,faSdCard } from '@fortawesome/free-solid-svg-icons'
+
 // import { useDispatch } from 'react-redux'
 
 function Home() {
@@ -49,22 +52,23 @@ function Home() {
                 {/* Left Part(20%) */}
                 <div className={styles.leftSideBar}>
                     {/* Add File/Folder */}
-                    <Modals />
+                    {/* <Modals /> */}
+                    <br />
                     <br />
                     <Link to="/home" className={styles.optionBtn} >
-                        Home
+                        <FontAwesomeIcon icon={ faHome } />&nbsp;&nbsp;Home
                     </Link>
                     <Link to="/drive" className={styles.optionBtn} >
-                        My Drive
+                    <FontAwesomeIcon icon={ faDatabase } />&nbsp;&nbsp;My Drive
                     </Link>
                     <button className={styles.optionBtn}>
-                        Computers
-                    </button>
-                        <button className={styles.optionBtn}>
-                        Recent
+                    <FontAwesomeIcon icon={ faDesktop } />&nbsp;&nbsp; Computers
                     </button>
                     <button className={styles.optionBtn}>
-                        Bin
+                    <FontAwesomeIcon icon={ faCalendarWeek } />&nbsp;&nbsp; Recent
+                    </button>
+                    <button className={styles.optionBtn}>
+                    <FontAwesomeIcon icon={ faSdCard } />&nbsp;&nbsp; Bin
                     </button>
                 </div>
             {/* Right Part */}

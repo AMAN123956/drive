@@ -4,9 +4,13 @@ import { Link } from 'react-router-dom'
 import styles from './styles.module.css'
 
 // import Modals from '../Modal/index'
-import { Button} from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 import FileForm from '../Form/file'
 import FolderForm from '../Form/folder'
+// Font Awesome Icon
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHome, faDatabase,faDesktop,faCalendarWeek,faSdCard } from '@fortawesome/free-solid-svg-icons'
+
 
 function Sidebar() {
     const [count, setcount] = useState(false)
@@ -15,29 +19,29 @@ function Sidebar() {
     }
     return (
         <div className={styles.leftSideBar}>
-        <Button className={styles.addFileBtn} onClick={handleNew}>
-            + New
+            <Button className={styles.addFileBtn} onClick={handleNew}>
+                + New
             </Button>
             {count === true ? (<div className={styles.selectBox}>
                 <FolderForm />
                 <FileForm />
-            </div>): null }
-            
+            </div>) : null}
+
             <br />
             <Link to="/home" className={styles.optionBtn} >
-                Home
+                <FontAwesomeIcon icon={faHome} />&nbsp;&nbsp;Home
             </Link>
             <Link to="/drive" className={styles.optionBtn} >
-                My Drive
+                <FontAwesomeIcon icon={faDatabase} />&nbsp;&nbsp;My Drive
             </Link>
             <button className={styles.optionBtn}>
-                Computers
-            </button>
-                <button className={styles.optionBtn}>
-                Recent
+                <FontAwesomeIcon icon={faDesktop} />&nbsp;&nbsp; Computers
             </button>
             <button className={styles.optionBtn}>
-                Bin
+                <FontAwesomeIcon icon={faCalendarWeek} />&nbsp;&nbsp; Recent
+            </button>
+            <button className={styles.optionBtn}>
+                <FontAwesomeIcon icon={faSdCard} />&nbsp;&nbsp; Bin
             </button>
         </div>
     )

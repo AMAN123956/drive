@@ -43,7 +43,7 @@ function Menu() {
                     </DropdownButton>
                 </InputGroup>
                 <Nav className="ml-auto align-items-center">
-                    <Nav.Link href="#features">About</Nav.Link>
+                    <Link to="/about" class='text-dark'>About</Link>
                     <Nav.Link href="#pricing">Profile</Nav.Link>
                     <Nav.Link className="text-danger"><Button className={styles.btn} onClick={logoutHandler}>Logout</Button></Nav.Link>
                 </Nav>

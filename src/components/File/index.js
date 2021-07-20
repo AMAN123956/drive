@@ -19,8 +19,6 @@ function File({ name ,link}) {
                         <Modal.Title>AA Drive</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <p class='text-danger'>Deleted Files can't be recovered
-                        </p>
                         <p class='text-success'>Do You Confirm Want to Delete</p>
                     </Modal.Body>
                     <Modal.Footer>
@@ -38,7 +36,8 @@ function File({ name ,link}) {
                     </DropdownButton>
                 </div>
                 <div className={styles.icon}>
-                    <a href={link} target='_blank' rel="noreferrer"><FontAwesomeIcon icon={faFileDownload}className={styles.fIcon}  /></a>
+                    <a href={link} target='_blank' rel="noreferrer">
+                        <FontAwesomeIcon icon={faFileDownload} className={styles.fIcon} /></a>
                 </div>
                 <div className={styles.name}>{name}</div>
             </div>

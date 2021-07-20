@@ -78,9 +78,10 @@
 /* fcontainer */
 .fContainer{
     margin-top: 0px;
-   max-height:80vh;
+    max-height:80vh;
     overflow-y:auto;
     overflow-x:hidden;
+    padding:20px;
 }
 
 

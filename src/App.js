@@ -11,6 +11,8 @@ import Home from './components/Home/index'
 /* Drive Page */
 import Drive from './components/Drive/index'
 import Folders from './components/Folders/index'
+/* About Page */
+import About from './components/About/index'
 
 import {BrowserRouter as Router ,Switch,Route} from 'react-router-dom'
 import Bin from './components/Bin';
@@ -28,6 +30,7 @@ function App() {
             <Route path='/drive'><Drive /></Route>
             <Route path='/folder/:id' component={Folders}></Route>
             <Route path='/bin' component={Bin}></Route>
+            <Route path='/about' component={About}></Route>
           </Switch>
         </Router>
       </div>
