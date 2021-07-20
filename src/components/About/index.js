@@ -162,18 +162,18 @@ function About() {
                             <Card style={{ width: '22rem' , height:'28rem' }}>
                             <Card.Img variant="top" className={styles.cardImg} src="https://avatars.githubusercontent.com/u/55759980?v=4" />
                             <Card.Body>
-                                    <Card.Title className='text-center' style={{ color: '#20bead', fontSize: '1.8rem'}}>Abhinav Yadav</Card.Title>
+                                    <Card.Title className='text-center' style={{ color: '#20bead', fontSize: '1.8rem'}}>Abhinav Thakur</Card.Title>
                                 </Card.Body>
                                   <Card.Footer className="d-flex justify-content-center">
-                                    <a href="https://github.com/geekyabhi" target="_blank"  rel="noreferrer">
+                                    <a className={styles.socialLink} href="https://github.com/geekyabhi" target="_blank"  rel="noreferrer">
                                     <img className={styles.socialImg} alt='github-logo'
                                         src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png' />
                                     </a>
-                                    <a href="https://www.linkedin.com/in/geekyabhi/" target="_blank"  rel="noreferrer">
+                                    <a className={styles.socialLink} href="https://www.linkedin.com/in/geekyabhi/" target="_blank"  rel="noreferrer">
                                         <img className={styles.socialImg} alt='linkedin-logo'
                                         src='https://www.freeiconspng.com/thumbs/linkedin-logo-png/linkedin-logo-3.png' />
                                     </a>
-                                    <a href="https://abhi-strike.netlify.app/" target="_blank"  rel="noreferrer">
+                                    <a className={styles.socialLink} href="https://abhi-strike.netlify.app/" target="_blank"  rel="noreferrer">
                                         <img className={styles.socialImg} alt='portfolio-website'
                                         src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW6X2lldt_gy2tcbXCKBbKWNVBpH-f1Mcjsw&usqp=CAU' />
                                     </a>
@@ -185,15 +185,15 @@ function About() {
                                 <Card.Title className='text-center' style={{ color: '#20bead', fontSize: '1.8rem'}}>Aman Dixit</Card.Title>
                                 </Card.Body>
                                 <Card.Footer className="d-flex justify-content-center">
-                                    <a href="https://github.com/AMAN123956" target="_blank"  rel="noreferrer">
+                                    <a className={styles.socialLink} href="https://github.com/AMAN123956" target="_blank"  rel="noreferrer">
                                     <img className={styles.socialImg} alt='github-logo'
                                         src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png' />
                                     </a>
-                                    <a href="https://www.linkedin.com/in/aman-dixit-b371b9190/" target="_blank"  rel="noreferrer">
+                                    <a className={styles.socialLink} href="https://www.linkedin.com/in/aman-dixit-b371b9190/" target="_blank"  rel="noreferrer">
                                         <img className={styles.socialImg} alt='linkedin-logo'
                                         src='https://www.freeiconspng.com/thumbs/linkedin-logo-png/linkedin-logo-3.png' />
                                     </a>
-                                    <a href="https://www.amandixit.me" target='_blank'  rel="noreferrer">
+                                    <a className={styles.socialLink} href="https://www.amandixit.me" target='_blank'  rel="noreferrer">
                                         <img className={styles.socialImg} alt='portfolio-website'
                                         src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW6X2lldt_gy2tcbXCKBbKWNVBpH-f1Mcjsw&usqp=CAU' />
                                     </a>

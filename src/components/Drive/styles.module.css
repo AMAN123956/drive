@@ -1,4 +1,6 @@
-
+body{
+    overflow-y:hidden;
+}
 /* Left SideBar */
 .leftSideBar{
     width:18%;
