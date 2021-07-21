@@ -1,42 +1,50 @@
 /* Global Css */
-import './App.css';
+import "./App.css";
 /* Bootstrap */
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 /* Register */
-import Register from './components/Register/index'
+import Register from "./components/Register/index";
 /* Login */
-import Login from './components/Login/index'
+import Login from "./components/Login/index";
 /* Home Page */
-import Home from './components/Home/index'
+import Home from "./components/Home/index";
 /* Drive Page */
-import Drive from './components/Drive/index'
-import Folders from './components/Folders/index'
+import Drive from "./components/Drive/index";
+import Folders from "./components/Folders/index";
 /* About Page */
-import About from './components/About/index'
+import About from "./components/About/index";
+import Recent from "./components/Recent/index";
 
-import {BrowserRouter as Router ,Switch,Route} from 'react-router-dom'
-import Bin from './components/Bin';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Bin from "./components/Bin";
 
 function App() {
-  return (
-    
-    <Router>
-      <div className="App">
-        <Router>
-          <Switch>
-            <Route path='/' exact><Register></Register></Route>
-            <Route path='/login'><Login></Login></Route>
-            <Route path='/home'><Home /></Route>
-            <Route path='/drive'><Drive /></Route>
-            <Route path='/folder/:id' component={Folders}></Route>
-            <Route path='/bin' component={Bin}></Route>
-            <Route path='/about' component={About}></Route>
-          </Switch>
-        </Router>
-      </div>
-      </Router>
-    
-  );
+	return (
+		<Router>
+			<div className="App">
+				<Router>
+					<Switch>
+						<Route path="/" exact>
+							<Register></Register>
+						</Route>
+						<Route path="/login">
+							<Login></Login>
+						</Route>
+						<Route path="/home">
+							<Home />
+						</Route>
+						<Route path="/drive">
+							<Drive />
+						</Route>
+						<Route path="/folder/:id" component={Folders}></Route>
+						<Route path="/bin" component={Bin}></Route>
+						<Route path="/about" component={About}></Route>
+						<Route path="/recent" component={Recent}></Route>
+					</Switch>
+				</Router>
+			</div>
+		</Router>
+	);
 }
 
 export default App;

@@ -109,8 +109,8 @@ function Drive() {
 					</div>
 					<div className="p-1">
 						{error && <Message variant={"danger"}>{error}</Message>}
-						{!folderId && <Loader1></Loader1>}
-						{loading && <Loader1></Loader1>}
+						{!error && !folderId && <Loader1></Loader1>}
+						{!error && loading && <Loader1></Loader1>}
 
 						<div className={styles.fContainer}>
 							{childFolder &&
