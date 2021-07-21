@@ -1,6 +1,6 @@
-body {
-	overflow-y: scroll;
-}
+/* body{
+    overflow-y: sc;
+} */
 /* Left SideBar */
 .leftSideBar {
 	width: 18%;
@@ -25,9 +25,10 @@ body {
 	color: gray;
 }
 .rightBox {
-	display: flex;
-	width: 80%;
-	height: 650px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
 }
 .rightBox h2 {
 	font-size: 2.5rem;
@@ -45,7 +46,7 @@ body {
 .emptyImg {
 	width: 60%;
 }
-a {
+.socialLink {
 	text-align: left;
 	text-decoration: none;
 	display: block;
@@ -54,87 +55,4 @@ a {
 }
 .socialImg {
 	width: 100%;
-}
-.leftHalf {
-	background: linear-gradient(
-			rgba(255, 255, 255, 0.762),
-			rgba(255, 255, 255, 0.667)
-		),
-		url("../../assets/img/empty.png");
-	background-size: 600px;
-	background-position: center;
-	background-repeat: no-repeat;
-	padding: 30px;
-	width: 50%;
-}
-
-.leftHalf h1 {
-	color: #20bead;
-}
-
-.leftHalf p {
-	margin-top: 30px;
-	font-size: 18px;
-}
-
-.rightHalf {
-	display: flex;
-	flex-direction: column;
-	padding: 30px;
-	width: 50%;
-	height: 100%;
-}
-
-.rightHalf .creator {
-	padding: 10px;
-	height: 45%;
-	display: flex;
-	justify-content: space-around;
-}
-
-.creator .image {
-	width: 42%;
-	height: 100%;
-}
-
-.image {
-	border-radius: 50%;
-	background-color: chocolate;
-}
-
-.creator .detail {
-	width: 45%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-around;
-}
-.detail h5 {
-	padding-left: 20px;
-	width: 100%;
-	font-size: 35px;
-	font-weight: 200;
-	color: #20bead;
-	transition: all 0.2s;
-}
-.detail h5:hover {
-	transform: scale(1.1);
-	text-shadow: 1px 1px 10px #20bead;
-}
-
-.detail .links {
-	display: flex;
-	width: 90%;
-	justify-content: space-around;
-}
-
-.links img {
-	transition: all 0.2s;
-	width: 50px;
-}
-
-.links img:hover {
-	cursor: pointer;
-	transform: translateY(-1px);
 }
