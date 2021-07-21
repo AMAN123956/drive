@@ -1,6 +1,4 @@
-body {
-	overflow-y: scroll;
-}
+
 /* Left SideBar */
 .leftSideBar {
 	width: 18%;
@@ -45,7 +43,7 @@ body {
 .emptyImg {
 	width: 60%;
 }
-a {
+.socialLink{
 	text-align: left;
 	text-decoration: none;
 	display: block;

@@ -6,6 +6,7 @@ import { Button ,Row,Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 import { setFolder } from '../../actions/currentFolderAction';
 import { useHistory } from 'react-router-dom';
+import emptyImg  from '../../assets/img/empty.png'
 // import url from '../../utilities';
 import axios from 'axios';
 import Folder from '../Folder/index'
@@ -81,7 +82,9 @@ const Folders = ({ match }) => {
                     <div className={styles.fContainer}>
                         <h4 className="mt-4 mt-2">Folder</h4>
                         {
-                            childFolder&&childFolder.length===0&&<div className={styles.empty}>No Folders</div>
+                                childFolder && childFolder.length === 0 && <div className={styles.empty}>
+                                    <img src={emptyImg} className={styles.emptyImg} alt='empty-img' />
+                                    </div>
                         }
                         {
                             childFolder&&
@@ -102,7 +105,10 @@ const Folders = ({ match }) => {
                         }
                         <h4 className="mt-4 mt-2">Files</h4>
                         {
-                            childFiles&&childFiles.length===0&&<div className={styles.empty}>No Files</div>
+                                childFiles && childFiles.length === 0 &&
+                                <div className={styles.empty}>
+                                    <img src={emptyImg} className={styles.emptyImg} alt='empty-img' />
+                                </div>
                         }
                         {
                             childFiles&&

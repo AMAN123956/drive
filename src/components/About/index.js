@@ -78,7 +78,7 @@ function About() {
 							<div class={styles.detail}>
 								<h5>Abhinav Thakur</h5>
 								<div class={styles.links}>
-									<a
+									<a  className={styles.socialLink} 
 										href="https://www.linkedin.com/in/geekyabhi/"
 										target="_blank"
 										rel="noreferrer"
@@ -89,7 +89,7 @@ function About() {
 											alt=""
 										></img>
 									</a>
-									<a
+									<a className={styles.socialLink}
 										href="https://github.com/geekyabhi"
 										target="_blank"
 										rel="noreferrer"
@@ -100,7 +100,7 @@ function About() {
 											alt=""
 										></img>
 									</a>
-									<a
+									<a  className={styles.socialLink}
 										href="https://abhi-strike.netlify.app"
 										target="_blank"
 										rel="noreferrer"
@@ -118,7 +118,7 @@ function About() {
 							<div class={styles.detail}>
 								<h5>Aman Dixit</h5>
 								<div class={styles.links}>
-									<a
+									<a  className={styles.socialLink}
 										href="https://www.linkedin.com/in/aman-dixit-b371b9190/"
 										target="_blank"
 										rel="noreferrer"
@@ -129,7 +129,7 @@ function About() {
 											alt=""
 										></img>
 									</a>
-									<a
+									<a  className={styles.socialLink}
 										href="https://github.com/AMAN123956"
 										target="_blank"
 										rel="noreferrer"
@@ -140,7 +140,7 @@ function About() {
 											alt=""
 										></img>
 									</a>
-									<a
+									<a  className={styles.socialLink}
 										href="https://www.amandixit.me"
 										target="_blank"
 										rel="noreferrer"
