@@ -13,8 +13,10 @@ import Drive from "./components/Drive/index";
 import Folders from "./components/Folders/index";
 /* About Page */
 import About from "./components/About/index";
+/* Recent Page */
 import Recent from "./components/Recent/index";
-
+/* Profile Page */
+import Profile from './components/Profile/index'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Bin from "./components/Bin";
 
@@ -40,6 +42,7 @@ function App() {
 						<Route path="/bin" component={Bin}></Route>
 						<Route path="/about" component={About}></Route>
 						<Route path="/recent" component={Recent}></Route>
+						<Route path="/profile" component={Profile}></Route>
 					</Switch>
 				</Router>
 			</div>

@@ -44,7 +44,7 @@ function Menu() {
                 </InputGroup>
                 <Nav className="ml-auto align-items-center">
                     <Nav.Link href="/about" class='text-dark'>About</Nav.Link>
-                    <Nav.Link href="#pricing">Profile</Nav.Link>
+                    <Nav.Link href="/profile" class='text-dark'>Profile</Nav.Link>
                     <Nav.Link className="text-danger"><Button className={styles.btn} onClick={logoutHandler}>Logout</Button></Nav.Link>
                 </Nav>
             </Navbar>
