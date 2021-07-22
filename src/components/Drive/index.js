@@ -102,7 +102,7 @@ function Drive() {
 					<div className="mt-2">
 						<Button
 							className={styles.backButton}
-							onClick={() => history.push("/home")}
+							onClick={() => history.goBack()}
 						>
 							Back
 						</Button>

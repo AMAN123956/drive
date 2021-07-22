@@ -70,7 +70,7 @@ function Drive() {
 					// console.log('Folder called')
 					setloading(true);
 					const { data } = await axios.get(
-						`${url}/api/recent`,
+						`${url}/api/users/recent`,
 						config
 					);
 					setloading(false);
@@ -145,12 +145,28 @@ function Drive() {
 														>
 															<Folder
 																name={
-																	folder.name
+																	String(
+																		folder.parentFolder
+																	) ===
+																	String(
+																		folder.user
+																	)
+																		? "Drive"
+																		: folder.name
 																}
 																id={
 																	folder.folder
 																}
-																link={`/folder/${folder.folder}`}
+																link={
+																	String(
+																		folder.parentFolder
+																	) ===
+																	String(
+																		folder.user
+																	)
+																		? "/drive"
+																		: `/folder/${folder._id}`
+																}
 															></Folder>
 														</Col>
 													);
