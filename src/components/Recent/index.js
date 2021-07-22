@@ -137,7 +137,7 @@ function Drive() {
 												.map((folder) => {
 													return (
 														<Col
-															key={folder.folder}
+															key={folder._id}
 															sm={12}
 															md={6}
 															lg={4}
@@ -154,9 +154,7 @@ function Drive() {
 																		? "Drive"
 																		: folder.name
 																}
-																id={
-																	folder.folder
-																}
+																id={folder._id}
 																link={
 																	String(
 																		folder.parentFolder
@@ -194,7 +192,7 @@ function Drive() {
 												.map((file) => {
 													return (
 														<Col
-															key={file.file}
+															key={file._id}
 															sm={12}
 															md={6}
 															lg={4}
@@ -202,7 +200,7 @@ function Drive() {
 														>
 															<File
 																name={file.name}
-																id={file.file}
+																id={file._id}
 																link={file.link}
 															></File>
 														</Col>
