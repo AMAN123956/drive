@@ -21,13 +21,17 @@
 	color: gray;
 }
 .rightBox {
-	margin-top:20px;
+	margin-top: 20px;
 	display: flex;
 	width: 80%;
 	align-items: center;
-	justify-content: center;
 }
-.profileImg{
-	width:100px;
-	height:100px;
+.profileImg {
+	width: 100px;
+	height: 100px;
+}
+.profileCard {
+	margin-top: 80px;
+	left: 45%;
+	transform: translateX(-50%);
 }

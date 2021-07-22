@@ -161,7 +161,9 @@ function Profile() {
 				</div>
 				{/* Right Side */}
 				<div className={styles.rightBox}>
-					<div className="card shadow col-6 p-5">
+					<div
+						className={`card shadow col-6 p-5 ${styles.profileCard}`}
+					>
 						<Form>
 							{error && (
 								<Message variant={"danger"}>{error}</Message>
