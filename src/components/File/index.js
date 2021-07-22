@@ -42,7 +42,7 @@ function File({ name, id, link }) {
 			if (data) {
 				setloading(false);
 				if (data.success) {
-					setmessage("Folder successfully deleted");
+					setmessage("File successfully deleted");
 					window.location.reload();
 				} else {
 					seterror(data.error);
