@@ -70,7 +70,7 @@ function Drive() {
 					// console.log('Folder called')
 					setloading(true);
 					const { data } = await axios.get(
-						`${url}/api/recent`,
+						`${url}/api/users/recent`,
 						config
 					);
 					setloading(false);
@@ -137,7 +137,7 @@ function Drive() {
 												.map((folder) => {
 													return (
 														<Col
-															key={folder.folder}
+															key={folder._id}
 															sm={12}
 															md={6}
 															lg={4}
@@ -145,12 +145,26 @@ function Drive() {
 														>
 															<Folder
 																name={
-																	folder.name
+																	String(
+																		folder.parentFolder
+																	) ===
+																	String(
+																		folder.user
+																	)
+																		? "Drive"
+																		: folder.name
 																}
-																id={
-																	folder.folder
+																id={folder._id}
+																link={
+																	String(
+																		folder.parentFolder
+																	) ===
+																	String(
+																		folder.user
+																	)
+																		? "/drive"
+																		: `/folder/${folder._id}`
 																}
-																link={`/folder/${folder.folder}`}
 															></Folder>
 														</Col>
 													);
@@ -178,7 +192,7 @@ function Drive() {
 												.map((file) => {
 													return (
 														<Col
-															key={file.file}
+															key={file._id}
 															sm={12}
 															md={6}
 															lg={4}
@@ -186,7 +200,7 @@ function Drive() {
 														>
 															<File
 																name={file.name}
-																id={file.file}
+																id={file._id}
 																link={file.link}
 															></File>
 														</Col>
