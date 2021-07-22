@@ -76,12 +76,13 @@ function Profile() {
 					Authorization: `Bearer ${userInfoFromStorage.token}`,
 				},
 			};
+			setloading(true);
 			const { data } = await axios.put(
 				`${url}/api/users/update`,
 				{ name, email, password, imgurl },
 				config
 			);
-			setloading(true);
+			setloading(false);
 			if (data.success) {
 				setloading(false);
 				setmessage("Updated!!!");
