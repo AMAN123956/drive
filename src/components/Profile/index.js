@@ -33,7 +33,6 @@ function Profile() {
 	}
 	// Cloudinary Setup
 	const beginUpload = (tag) => {
-		alert("here");
 		const uploadOptions = {
 			cloudName: "dtqzhg98l",
 			tags: [tag, "my image"],
