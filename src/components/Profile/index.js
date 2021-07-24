@@ -14,6 +14,7 @@ import {
 	faDesktop,
 	faCalendarWeek,
 	faSdCard,
+	faEdit,
 } from "@fortawesome/free-solid-svg-icons";
 import { Form, Button } from "react-bootstrap";
 
@@ -161,7 +162,7 @@ function Profile() {
 				{/* Right Side */}
 				<div className={styles.rightBox}>
 					<div
-						className={`card shadow col-6 p-5 ${styles.profileCard}`}
+						className={`card shadow col-6 p-4 ${styles.profileCard}`}
 					>
 						<Form>
 							{error && (
@@ -179,9 +180,9 @@ function Profile() {
 							</div>
 							<Button
 								onClick={() => beginUpload()}
-								className="btn btn-dark px-3"
+								className="btn btn-dark px-3" style={{marginTop:'-73px'}}
 							>
-								Edit
+								<FontAwesomeIcon icon={faEdit} />&nbsp;&nbsp;Edit
 							</Button>
 							<Form.Group>
 								<Form.Control
@@ -232,13 +233,13 @@ function Profile() {
 							{loading ? (
 								<Loader1></Loader1>
 							) : (
-								<Button
+								<Button className='p-2' style={{width:'100%'}}
 									variant="primary"
 									type="submit"
 									onClick={submitHandler}
 									disabled={loading}
-								>
-									Update
+									>
+										Update
 								</Button>
 							)}
 						</Form>

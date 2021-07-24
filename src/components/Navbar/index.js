@@ -1,21 +1,53 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import url from "../../utilities";
 import styles from './styles.module.css'
-import { Navbar, Nav, FormControl, InputGroup, DropdownButton, Dropdown, Button  } from 'react-bootstrap'
-import {Link, useHistory} from 'react-router-dom'
+import { Navbar, Nav, FormControl, InputGroup, DropdownButton, Dropdown, ButtonGroup,Button } from 'react-bootstrap'
+import { Link, useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { logout } from '../../actions/userActions'
 
 function Menu() {
 
-    const history=useHistory()
-    const dispatch=useDispatch()
+    const history = useHistory()
+    const dispatch = useDispatch()
 
-    const logoutHandler=()=>{
+    const logoutHandler = () => {
         // console.log('Clicked')
         dispatch(logout())
         history.push('/login')
     }
+    // States
+    const [name, setname] = useState(null);
+    const [imgurl, setimgurl] = useState(null);
+   
+    // useEffect
+    useEffect(() => {
+        const userInfoFromStorage = localStorage.getItem("driveUserInfo")
+            ? JSON.parse(localStorage.getItem("driveUserInfo"))
+            : null;
 
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${userInfoFromStorage.token}`,
+            },
+        };
+        const getData = async () => {
+            const { data } = await axios.get(`${url}/api/users/`, config);
+
+            console.log(data);
+
+            if (data.success) {
+                setname(data.data.name);
+                setimgurl(data.data.imgurl);
+            } else {
+                console.log('error');
+            }
+        };
+        getData();
+        // eslint-disable-next-line
+    }, []);
     return (
         <>
             <Navbar className="p-3" bg="light" variant="light">
@@ -43,9 +75,20 @@ function Menu() {
                     </DropdownButton>
                 </InputGroup>
                 <Nav className="ml-auto align-items-center">
-                    <Nav.Link href="/about" class='text-dark'>About</Nav.Link>
-                    <Nav.Link href="/profile" class='text-dark'>Profile</Nav.Link>
-                    <Nav.Link className="text-danger"><Button className={styles.btn} onClick={logoutHandler}>Logout</Button></Nav.Link>
+                    <Nav.Link href="/about"><h5 className='text-dark'>About</h5></Nav.Link>
+                    &nbsp;
+                    <Dropdown as={ButtonGroup}>
+                        <Button variant='outline-info'>
+                            <img src={imgurl} className={styles.navImg}
+                                alt='user_img'
+                            />&nbsp;{name}
+                        </Button>
+                        <Dropdown.Toggle split variant="primary" id="dropdown-split-basic" />
+                        <Dropdown.Menu>
+                            <Dropdown.Item href="/profile">Profile</Dropdown.Item>
+                            <Dropdown.Item href="#" className='text-danger' onClick={logoutHandler}>Logout</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
                 </Nav>
             </Navbar>
         </>

@@ -74,9 +74,15 @@ function About() {
 					</div>
 					<div class={styles.rightHalf}>
 						<div class={styles.creator}>
-							<div class={styles.image}></div>
+							<div class={styles.image}>
+								<img className={styles.profileImg}
+									src="https://avatars.githubusercontent.com/u/55759980?v=4"
+									alt='profile_img'
+							        draggable='false'
+								/>
+							</div>
 							<div class={styles.detail}>
-								<h5>Abhinav Thakur</h5>
+								<h3>Abhinav Thakur</h3>
 								<div class={styles.links}>
 									<a
 										className={styles.socialLink}
@@ -119,7 +125,7 @@ function About() {
 						</div>
 						<div class={styles.creator}>
 							<div class={styles.detail}>
-								<h5>Aman Dixit</h5>
+								<h3>Aman Dixit</h3>
 								<div class={styles.links}>
 									<a
 										className={styles.socialLink}
@@ -159,7 +165,13 @@ function About() {
 									</a>
 								</div>
 							</div>
-							<div class={styles.image}></div>
+							<div class={styles.image}>
+								<img className={styles.profileImg}
+									src='https://avatars.githubusercontent.com/u/56161073?v=4'
+									alt='profile_img'
+									draggable='false'
+								/>
+							</div>
 						</div>
 					</div>
 					{/* <div className={styles.teamBox}>
