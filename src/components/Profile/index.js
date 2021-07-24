@@ -171,18 +171,20 @@ function Profile() {
 							{message && (
 								<Message variant={"success"}>{message}</Message>
 							)}
-							<div className="mb-1">
+							<div className={`mb-1 ${styles.profileImgWrapper}`}>
 								<img
 									src={imgurl}
 									alt="user_img"
+									draggable="false"
 									className={styles.profileImg}
 								/>
 							</div>
 							<Button
 								onClick={() => beginUpload()}
-								className="btn btn-dark px-3" style={{marginTop:'-73px'}}
+								className="btn btn-dark px-3"
+								style={{ marginTop: "-74px" }}
 							>
-								<FontAwesomeIcon icon={faEdit} />&nbsp;&nbsp;Edit
+								<FontAwesomeIcon icon={faEdit} />
 							</Button>
 							<Form.Group>
 								<Form.Control
@@ -233,13 +235,15 @@ function Profile() {
 							{loading ? (
 								<Loader1></Loader1>
 							) : (
-								<Button className='p-2' style={{width:'100%'}}
+								<Button
+									className="p-2"
+									style={{ width: "100%" }}
 									variant="primary"
 									type="submit"
 									onClick={submitHandler}
 									disabled={loading}
-									>
-										Update
+								>
+									Update
 								</Button>
 							)}
 						</Form>
