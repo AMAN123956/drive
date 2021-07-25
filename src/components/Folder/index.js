@@ -55,6 +55,30 @@ function Folder({ name, id, link }) {
 		}
 	};
 
+	const sendToRecycleBin = async () => {
+		try {
+			setloading(true);
+			console.log(config);
+			const { data } = await axios.put(
+				`${url}/api/folders/recycled/${id}`,
+				{},
+				config
+			);
+			if (data) {
+				setloading(false);
+				if (data.success) {
+					setmessage("Check your folder in bin");
+					window.location.reload();
+				} else {
+					seterror(data.error);
+				}
+			}
+		} catch (e) {
+			console.log(e);
+			seterror("Some error occured try again");
+		}
+	};
+
 	return (
 		<>
 			<div className={styles.folder}>
@@ -73,8 +97,11 @@ function Folder({ name, id, link }) {
 						<Button variant="secondary" onClick={handleClose}>
 							Close
 						</Button>
+						<Button variant="danger" onClick={sendToRecycleBin}>
+							Recycle
+						</Button>
 						<Button variant="danger" onClick={deleteFolder}>
-							Confirm Delete
+							Permanent Delete
 						</Button>
 					</Modal.Footer>
 				</Modal>

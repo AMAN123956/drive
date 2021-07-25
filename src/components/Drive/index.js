@@ -137,23 +137,27 @@ function Drive() {
 												})
 												.map((folder) => {
 													return (
-														<Col
-															key={folder.folder}
-															sm={12}
-															md={6}
-															lg={4}
-															xl={3}
-														>
-															<Folder
-																name={
-																	folder.name
-																}
-																id={
+														!folder.isrecycled && (
+															<Col
+																key={
 																	folder.folder
 																}
-																link={`/folder/${folder.folder}`}
-															></Folder>
-														</Col>
+																sm={12}
+																md={6}
+																lg={4}
+																xl={3}
+															>
+																<Folder
+																	name={
+																		folder.name
+																	}
+																	id={
+																		folder.folder
+																	}
+																	link={`/folder/${folder.folder}`}
+																></Folder>
+															</Col>
+														)
 													);
 												})}
 										</Row>
@@ -178,19 +182,27 @@ function Drive() {
 												})
 												.map((file) => {
 													return (
-														<Col
-															key={file.file}
-															sm={12}
-															md={6}
-															lg={4}
-															xl={3}
-														>
-															<File
-																name={file.name}
-																id={file.file}
-																link={file.link}
-															></File>
-														</Col>
+														!file.isrecycled && (
+															<Col
+																key={file.file}
+																sm={12}
+																md={6}
+																lg={4}
+																xl={3}
+															>
+																<File
+																	name={
+																		file.name
+																	}
+																	id={
+																		file.file
+																	}
+																	link={
+																		file.link
+																	}
+																></File>
+															</Col>
+														)
 													);
 												})}
 										</Row>
