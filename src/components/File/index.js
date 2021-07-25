@@ -54,6 +54,30 @@ function File({ name, id, link }) {
 		}
 	};
 
+	const sendToRecycleBin = async () => {
+		try {
+			setloading(true);
+			console.log(config);
+			const { data } = await axios.put(
+				`${url}/api/files/recycled/${id}`,
+				{},
+				config
+			);
+			if (data) {
+				setloading(false);
+				if (data.success) {
+					setmessage("Check your file in bin");
+					window.location.reload();
+				} else {
+					seterror(data.error);
+				}
+			}
+		} catch (e) {
+			console.log(e);
+			seterror("Some error occured try again");
+		}
+	};
+
 	// console.log(link)
 	return (
 		<>
@@ -70,8 +94,11 @@ function File({ name, id, link }) {
 						<Button variant="secondary" onClick={handleClose}>
 							Close
 						</Button>
+						<Button variant="secondary" onClick={sendToRecycleBin}>
+							Recycle
+						</Button>
 						<Button variant="danger" onClick={deleteFile}>
-							Confirm Delete
+							Permanent Delete
 						</Button>
 					</Modal.Footer>
 				</Modal>
