@@ -16,9 +16,9 @@ import About from "./components/About/index";
 /* Recent Page */
 import Recent from "./components/Recent/index";
 /* Profile Page */
-import Profile from './components/Profile/index'
+import Profile from "./components/Profile/index";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Bin from "./components/Bin";
+import Bin from "./components/Bin/index";
 
 function App() {
 	return (
@@ -43,6 +43,7 @@ function App() {
 						<Route path="/about" component={About}></Route>
 						<Route path="/recent" component={Recent}></Route>
 						<Route path="/profile" component={Profile}></Route>
+						<Route path="/recycleBin" component={Bin}></Route>
 					</Switch>
 				</Router>
 			</div>

@@ -74,10 +74,10 @@ function Home() {
 						<FontAwesomeIcon icon={faCalendarWeek} />
 						&nbsp;&nbsp; Recent
 					</Link>
-					<button className={styles.optionBtn}>
+					<Link to="/recycleBin" className={styles.optionBtn}>
 						<FontAwesomeIcon icon={faSdCard} />
 						&nbsp;&nbsp; Bin
-					</button>
+					</Link>
 				</div>
 				{/* Right Part */}
 				<div className={styles.rightBox}>

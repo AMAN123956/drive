@@ -155,6 +155,9 @@ function Drive() {
 																		folder.folder
 																	}
 																	link={`/folder/${folder.folder}`}
+																	isrecycled={
+																		folder.isrecycled
+																	}
 																></Folder>
 															</Col>
 														)
@@ -199,6 +202,9 @@ function Drive() {
 																	}
 																	link={
 																		file.link
+																	}
+																	isrecycled={
+																		file.isrecycled
 																	}
 																></File>
 															</Col>

@@ -8,7 +8,8 @@ import url from "../../utilities";
 import axios from "axios";
 import Message from "../Message";
 
-function Folder({ name, id, link }) {
+function Folder({ name, id, link, isrecycled }) {
+	console.log(isrecycled);
 	const [show, setShow] = useState(false);
 	const [error, seterror] = useState(null);
 	const [, setloading] = useState(null);
@@ -79,6 +80,30 @@ function Folder({ name, id, link }) {
 		}
 	};
 
+	const removeFromRecycleBin = async () => {
+		try {
+			setloading(true);
+			console.log(config);
+			const { data } = await axios.put(
+				`${url}/api/folders/recover/${id}`,
+				{},
+				config
+			);
+			if (data) {
+				setloading(false);
+				if (data.success) {
+					setmessage("Check your folder in bin");
+					window.location.reload();
+				} else {
+					seterror(data.error);
+				}
+			}
+		} catch (e) {
+			console.log(e);
+			seterror("Some error occured try again");
+		}
+	};
+
 	return (
 		<>
 			<div className={styles.folder}>
@@ -97,9 +122,18 @@ function Folder({ name, id, link }) {
 						<Button variant="secondary" onClick={handleClose}>
 							Close
 						</Button>
-						<Button variant="danger" onClick={sendToRecycleBin}>
-							Recycle
-						</Button>
+						{isrecycled ? (
+							<Button
+								variant="danger"
+								onClick={removeFromRecycleBin}
+							>
+								Restore
+							</Button>
+						) : (
+							<Button variant="danger" onClick={sendToRecycleBin}>
+								Recycle
+							</Button>
+						)}
 						<Button variant="danger" onClick={deleteFolder}>
 							Permanent Delete
 						</Button>

@@ -131,6 +131,9 @@ const Folders = ({ match }) => {
 																		folder.folder
 																	}
 																	link={`/folder/${folder.folder}`}
+																	isrecycled={
+																		folder.isrecycled
+																	}
 																></Folder>
 															</Col>
 														)
