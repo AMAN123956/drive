@@ -119,6 +119,13 @@ function File({ name, id, link }) {
 							icon={faFileDownload}
 							className={styles.fIcon}
 						/>
+						{/* <div className={styles.fileIconContainer}>
+							<img
+								src={link}
+								alt={link}
+								className={styles.fileIcon}
+							></img>
+						</div> */}
 					</a>
 				</div>
 				<div className={styles.name}>{name}</div>
