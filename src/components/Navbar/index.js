@@ -5,9 +5,7 @@ import styles from "./styles.module.css";
 import {
 	Navbar,
 	Nav,
-	FormControl,
 	InputGroup,
-	DropdownButton,
 	Dropdown,
 	ButtonGroup,
 	Button,
@@ -15,6 +13,7 @@ import {
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../actions/userActions";
+import Overlay from '../Overlay/index';
 
 function Menu() {
 	const history = useHistory();
@@ -28,7 +27,41 @@ function Menu() {
 	// States
 	const [name, setname] = useState(null);
 	const [imgurl, setimgurl] = useState(null);
+	const [overlay, setoverlay] = useState(false);
+	const [searchfiles, setsearchfiles] = useState(null);
+	const [searchfolders, setsearchfolders] = useState(null);
+    // Search Functionality 
+	const [searchtext, setsearchtext] = useState(null);
+	
+	const searchHandler = (e) => {
+		const userInfoFromStorage = localStorage.getItem("driveUserInfo")
+			? JSON.parse(localStorage.getItem("driveUserInfo"))
+			: null;
 
+		const config = {
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${userInfoFromStorage.token}`,
+			},
+		};
+		e.preventDefault();
+		console.log(e.target.value);
+		setoverlay(true);
+		setsearchtext(e.target.value)
+		if (e.target.value === "") {
+			setsearchfiles(null)
+			setsearchfolders(null)
+		}
+		else {
+			setTimeout(async () => {
+				// console.log("request made")
+				const { data } = await axios.get(`${url}/api/search/${e.target.value}`, config);
+				console.log(data);
+				setsearchfiles(data.data);
+				setsearchfolders(data.folderdata);
+			}, 200)
+		}
+	}
 	// useEffect
 	useEffect(() => {
 		const userInfoFromStorage = localStorage.getItem("driveUserInfo")
@@ -57,32 +90,14 @@ function Menu() {
 		// eslint-disable-next-line
 	}, []);
 	return (
-		<>
+		<div>
 			<Navbar className="p-3" bg="light" variant="light">
 				<Link to="/home">
 					<Navbar.Brand href="#">AA.Drive</Navbar.Brand>
 				</Link>
 				<InputGroup className={styles.searchBox}>
-					<FormControl
-						placeholder="Recipient's username"
-						aria-label="Recipient's username"
-						aria-describedby="basic-addon2"
-					/>
-
-					<DropdownButton
-						as={InputGroup.Append}
-						variant="outline-secondary"
-						title="Dropdown"
-						id="input-group-dropdown-2"
-					>
-						<Dropdown.Item href="#">Action</Dropdown.Item>
-						<Dropdown.Item href="#">Another action</Dropdown.Item>
-						<Dropdown.Item href="#">
-							Something else here
-						</Dropdown.Item>
-						<Dropdown.Divider />
-						<Dropdown.Item href="#">Separated link</Dropdown.Item>
-					</DropdownButton>
+				   <input className='form-control' value={searchtext} onChange={searchHandler} placeholder="Search" />
+                   <button className='btn btn-primary'>Search</button>
 				</InputGroup>
 				<Nav className="ml-auto align-items-center">
 					<Nav.Link href="/about">
@@ -118,7 +133,8 @@ function Menu() {
 					</Dropdown>
 				</Nav>
 			</Navbar>
-		</>
+			{overlay === true ? <Overlay files={searchfiles} folders={ searchfolders}/>:null}
+		</div>
 	);
 }
 
