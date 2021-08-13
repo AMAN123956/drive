@@ -13,7 +13,7 @@ import {
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../actions/userActions";
-import Overlay from '../Overlay/index';
+import Overlay from "../Overlay/index";
 
 function Menu() {
 	const history = useHistory();
@@ -30,9 +30,9 @@ function Menu() {
 	const [overlay, setoverlay] = useState(false);
 	const [searchfiles, setsearchfiles] = useState(null);
 	const [searchfolders, setsearchfolders] = useState(null);
-    // Search Functionality 
+	// Search Functionality
 	const [searchtext, setsearchtext] = useState(null);
-	
+
 	const searchHandler = (e) => {
 		const userInfoFromStorage = localStorage.getItem("driveUserInfo")
 			? JSON.parse(localStorage.getItem("driveUserInfo"))
@@ -47,21 +47,23 @@ function Menu() {
 		e.preventDefault();
 		console.log(e.target.value);
 		setoverlay(true);
-		setsearchtext(e.target.value)
+		setsearchtext(e.target.value);
 		if (e.target.value === "") {
-			setsearchfiles(null)
-			setsearchfolders(null)
-		}
-		else {
+			setsearchfiles(null);
+			setsearchfolders(null);
+		} else {
 			setTimeout(async () => {
 				// console.log("request made")
-				const { data } = await axios.get(`${url}/api/search/${e.target.value}`, config);
+				const { data } = await axios.get(
+					`${url}/api/search/${e.target.value}`,
+					config
+				);
 				console.log(data);
-				setsearchfiles(data.data);
-				setsearchfolders(data.folderdata);
-			}, 200)
+				setsearchfiles(data.data.fileData);
+				setsearchfolders(data.data.folderdata);
+			}, 200);
 		}
-	}
+	};
 	// useEffect
 	useEffect(() => {
 		const userInfoFromStorage = localStorage.getItem("driveUserInfo")
@@ -96,8 +98,13 @@ function Menu() {
 					<Navbar.Brand href="#">AA.Drive</Navbar.Brand>
 				</Link>
 				<InputGroup className={styles.searchBox}>
-				   <input className='form-control' value={searchtext} onChange={searchHandler} placeholder="Search" />
-                   <button className='btn btn-primary'>Search</button>
+					<input
+						className="form-control"
+						value={searchtext}
+						onChange={searchHandler}
+						placeholder="Search"
+					/>
+					<button className="btn btn-primary">Search</button>
 				</InputGroup>
 				<Nav className="ml-auto align-items-center">
 					<Nav.Link href="/about">
@@ -133,7 +140,9 @@ function Menu() {
 					</Dropdown>
 				</Nav>
 			</Navbar>
-			{overlay === true ? <Overlay files={searchfiles} folders={ searchfolders}/>:null}
+			{overlay === true ? (
+				<Overlay files={searchfiles} folders={searchfolders} />
+			) : null}
 		</div>
 	);
 }
