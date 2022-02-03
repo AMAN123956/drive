@@ -8,13 +8,13 @@ import registerImg from "../../assets/img/register.png";
 import axios from "axios";
 import url from "../../utilities";
 function Register() {
-	const [name, setname] = useState("Abhinav");
+	const [name, setname] = useState("");
 	const [email, setemail] = useState("");
-	const [password, setpassword] = useState("17122001");
+	const [password, setpassword] = useState("");
 	const [success, setSuccess] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [user, setuser] = useState(null);
-	const [confirmPassword, setconfirmPassword] = useState("17122001");
+	const [confirmPassword, setconfirmPassword] = useState("");
 	const [error, seterror] = useState(null);
 	const history = useHistory();
 
