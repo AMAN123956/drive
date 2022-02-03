@@ -75,10 +75,11 @@ function About() {
 					<div class={styles.rightHalf}>
 						<div class={styles.creator}>
 							<div class={styles.image}>
-								<img className={styles.profileImg}
+								<img
+									className={styles.profileImg}
 									src="https://avatars.githubusercontent.com/u/55759980?v=4"
-									alt='profile_img'
-							        draggable='false'
+									alt="profile_img"
+									draggable="false"
 								/>
 							</div>
 							<div class={styles.detail}>
@@ -166,10 +167,11 @@ function About() {
 								</div>
 							</div>
 							<div class={styles.image}>
-								<img className={styles.profileImg}
-									src='https://avatars.githubusercontent.com/u/56161073?v=4'
-									alt='profile_img'
-									draggable='false'
+								<img
+									className={styles.profileImg}
+									src="https://avatars.githubusercontent.com/u/56161073?v=4"
+									alt="profile_img"
+									draggable="false"
 								/>
 							</div>
 						</div>
