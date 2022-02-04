@@ -4,9 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolderPlus } from "@fortawesome/free-solid-svg-icons";
 import { Dropdown, DropdownButton, Button, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import url from "../../utilities";
+import {url} from "../../utilities";
 import axios from "axios";
 import Message from "../Message";
+
 
 function Folder({ name, id, link, isrecycled }) {
 	console.log(isrecycled);
@@ -148,7 +149,7 @@ function Folder({ name, id, link, isrecycled }) {
 						<Dropdown.Item onClick={handleShow}>
 							Delete
 						</Dropdown.Item>
-					</DropdownButton>
+						</DropdownButton>
 				</div>
 				<Link to={link}>
 					<div className={styles.icon}>

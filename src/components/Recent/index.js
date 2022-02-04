@@ -8,7 +8,7 @@ import { Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { setFolder } from "../../actions/currentFolderAction";
 import axios from "axios";
-import url from "../../utilities";
+import {url} from "../../utilities";
 import noFolder from "../../assets/img/nofolder.png";
 import Folder from "../Folder/index";
 import File from "../File/index";

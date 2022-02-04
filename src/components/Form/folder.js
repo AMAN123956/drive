@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import { Button, Modal, Form } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import url from "../../utilities";
+import {url} from "../../utilities";
 import Loader1 from "../Loader/Loader-1";
 import Message from "../Message";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

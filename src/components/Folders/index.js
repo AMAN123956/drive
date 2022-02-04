@@ -13,7 +13,7 @@ import Folder from "../Folder/index";
 import File from "../File/index";
 import Message from "../Message";
 import Loader1 from "../Loader/Loader-1";
-import url from "../../utilities";
+import {url} from "../../utilities";
 
 const Folders = ({ match }) => {
 	const history = useHistory();

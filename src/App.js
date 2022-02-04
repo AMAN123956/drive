@@ -17,7 +17,11 @@ import About from "./components/About/index";
 import Recent from "./components/Recent/index";
 /* Profile Page */
 import Profile from "./components/Profile/index";
+/* Share Page */
+import Share from './components/Share/index'
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import Bin from "./components/Bin/index";
 
 function App() {
@@ -44,6 +48,7 @@ function App() {
 						<Route path="/recent" component={Recent}></Route>
 						<Route path="/profile" component={Profile}></Route>
 						<Route path="/recycleBin" component={Bin}></Route>
+						<Route path="/share" component={Share}></Route>
 					</Switch>
 				</Router>
 			</div>

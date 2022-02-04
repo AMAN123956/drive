@@ -6,7 +6,7 @@ import Message from "../Message/index";
 import Loader1 from "../Loader/Loader-1/index";
 import registerImg from "../../assets/img/register.png";
 import axios from "axios";
-import url from "../../utilities";
+import {url} from "../../utilities";
 function Register() {
 	const [name, setname] = useState("");
 	const [email, setemail] = useState("");

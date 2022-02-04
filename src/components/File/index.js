@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileDownload } from "@fortawesome/free-solid-svg-icons";
 import { Dropdown, DropdownButton, Button, Modal } from "react-bootstrap";
-import url from "../../utilities";
+import {url} from "../../utilities";
 import axios from "axios";
 import Message from "../Message";
 
@@ -15,6 +15,9 @@ function File({ name, id, link }) {
 
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
+
+	const resLink = link.slice(62)
+	console.log(resLink)
 
 	const userInfoFromStorage = localStorage.getItem("driveUserInfo")
 		? JSON.parse(localStorage.getItem("driveUserInfo"))
@@ -110,6 +113,9 @@ function File({ name, id, link }) {
 					>
 						<Dropdown.Item onClick={handleShow}>
 							Delete
+						</Dropdown.Item>
+						<Dropdown.Item href={`/share?id=${resLink}&&name=${name}`}>
+							Share
 						</Dropdown.Item>
 					</DropdownButton>
 				</div>

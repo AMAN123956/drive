@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import url from "../../utilities";
+import {url} from "../../utilities";
 import { openUploadWidget } from "../../util/CloudinaryService";
 import Message from "../Message/index";
 import styles from "./styles.module.css";

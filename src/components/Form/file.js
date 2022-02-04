@@ -6,7 +6,7 @@ import { openUploadWidget } from "../../util/CloudinaryService";
 import axios from "axios";
 import styles from "./styles.module.css";
 import Loader1 from "../Loader/Loader-1";
-import url from "../../utilities";
+import {url} from "../../utilities";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileUpload } from "@fortawesome/free-solid-svg-icons";
 

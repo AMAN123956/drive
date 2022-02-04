@@ -17,23 +17,25 @@ import {
 	faSdCard,
 } from "@fortawesome/free-solid-svg-icons";
 
-function Sidebar() {
+function Sidebar(params) {
 	const [count, setcount] = useState(false);
 	const handleNew = () => {
 		setcount(!count);
 	};
 	return (
 		<div className={styles.leftSideBar}>
+		    { params.default === true ? null : (
 			<Button className={styles.addFileBtn} onClick={handleNew}>
 				+ New
 			</Button>
+			)}
 			{count === true ? (
 				<div className={styles.selectBox}>
 					<FolderForm />
 					<FileForm />
 				</div>
 			) : null}
-
+			
 			<br />
 			<Link to="/home" className={styles.optionBtn}>
 				<FontAwesomeIcon icon={faHome} />
